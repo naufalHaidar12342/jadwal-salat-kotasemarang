@@ -23,16 +23,7 @@ export default function SalatInfo({ propsSalatInfo }: any) {
 						{propsSalatInfo.data.jadwal[jadwalSalat]}
 					</div>
 					<div className="stat-title capitalize">{[jadwalSalat]}</div>
-					<div className="stat-desc text-secondary">
-						<a
-							href="https://www.google.com/maps/search/masjid+di+kota+semarang/@-7.0232716,110.4857935,15z/data=!3m1!4b1?entry=ttu"
-							target="_blank"
-							referrerPolicy="no-referrer"
-							className="link link-hover"
-						>
-							Cari masjid di Kota Semarang
-						</a>
-					</div>
+					<div className="stat-desc text-secondary"></div>
 				</div>
 			))}
 		</div>

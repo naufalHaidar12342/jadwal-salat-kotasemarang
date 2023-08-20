@@ -26,7 +26,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<main className="flex flex-col min-h-screen w-full justify-center items-center lg:p-20">
+				<main className="flex flex-col min-h-screen w-full justify-center items-center p-4 lg:p-20">
 					<NavigationTabs />
 					{children}
 					<div aria-description="credit of photo" className="italic mt-4">
