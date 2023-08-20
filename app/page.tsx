@@ -1,50 +1,35 @@
-import Image from "next/image";
 import { apiEndpoint } from "./data/apiendpoint";
 import { kotaSemarangID } from "./data/kotasemarangid";
-import { Metadata } from "next";
 import {
 	bulanHariIni,
 	bulanSingkatHariIni,
 	namaHariIni,
-	sekarang,
 	tahunHariIni,
 	tanggalHariIni,
 } from "./data/tanggal";
-import axios from "axios";
+import { fetchOptions } from "./data/fetchoptions";
+import SalatInfo from "./components/salatinfo";
 
-// console.log("hari ini=", namaHariIni);
-// console.log("tanggal hari ini=", tanggalHariIni);
-// console.log("bulan singkat=", bulanSingkatHariIni);
-
-// console.log("bulan ini=", bulanHariIni);
-// console.log("tahun ini=", tahunHariIni);
-
-async function getJadwalHariIni() {
-	const respon = await axios.get(
-		`${apiEndpoint}${kotaSemarangID}/${tahunHariIni}/${bulanSingkatHariIni}/${tanggalHariIni}`
+async function fetchJadwalHariIni() {
+	const fetchingJadwalHariIni = await fetch(
+		`${apiEndpoint}${kotaSemarangID}/${tahunHariIni}/${bulanSingkatHariIni}/${tanggalHariIni}`,
+		fetchOptions
 	);
-	// console.log("respon=", respon.data);
-	return respon.data;
+	return fetchingJadwalHariIni.json();
 }
 
-export const metadata: Metadata = {
-	title: `Jadwal Sholat ${tanggalHariIni} ${bulanHariIni} ${tahunHariIni}`,
-};
 export default async function JadwalHariIni() {
-	const jadwals = await getJadwalHariIni();
-	console.log("jadwals=", jadwals);
-
+	const fetchedJadwalHariIni = await fetchJadwalHariIni();
+	console.log("fetchedJadwalHariIni=", fetchedJadwalHariIni);
 	return (
-		<div className="">
-			test for index page/homepage
-			<div>Kota Semarang, {jadwals.data.daerah}</div>
-			<div>Lintang = {jadwals.data.koordinat.lintang}</div>
-			<div>Bujur = {jadwals.data.koordinat.bujur}</div>
-			<div>
-				Jadwal hari ini, {tanggalHariIni} {bulanHariIni} {tahunHariIni}
-				<div>solat subuh: {jadwals.data.jadwal.subuh} WIB</div>
-				<div>solat dzuhur: {jadwals.data.jadwal.dzuhur} WIB</div>
+		<div className="w-full flex flex-col justify-center items-center">
+			<div className="text-center flex flex-col flex-wrap">
+				<h2 className="text-3xl">🗺️ Kota Semarang, Jawa Tengah</h2>
+				<h3 className="text-2xl mb-4">
+					{namaHariIni}, {tanggalHariIni} {bulanHariIni} {tahunHariIni}{" "}
+				</h3>
 			</div>
+			<SalatInfo propsSalatInfo={fetchedJadwalHariIni} />
 		</div>
 	);
 }
