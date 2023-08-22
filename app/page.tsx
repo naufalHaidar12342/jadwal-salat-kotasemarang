@@ -33,7 +33,7 @@ export default async function JadwalHariIni() {
 						href="https://www.google.com/maps/search/masjid+di+kota+semarang/@-7.0232716,110.4857935,15z/data=!3m1!4b1?entry=ttu"
 						target="_blank"
 						referrerPolicy="no-referrer"
-						className="link link-hover"
+						className="link link-hover link-info"
 					>
 						Cari masjid di Kota Semarang
 					</a>

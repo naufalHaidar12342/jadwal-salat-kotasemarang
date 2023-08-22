@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { jamHariIni, menitHariIni } from "../data/tanggal";
+import { LawangSewu } from "./gambar";
 
 export default function SalatInfo({ propsSalatInfo }: any) {
 	const jadwalSalatDitampilkan = [
@@ -9,13 +11,13 @@ export default function SalatInfo({ propsSalatInfo }: any) {
 		"isya",
 	];
 	return (
-		<div className="stats stats-vertical lg:stats-horizontal shadow">
+		<div className="stats stats-vertical lg:stats-horizontal shadow-xl">
 			{jadwalSalatDitampilkan.map((jadwalSalat) => (
 				<div className="stat" key={jadwalSalat}>
 					<div className="stat-figure text-secondary">
 						<div className="avatar">
-							<div className="w-16 rounded-full">
-								<img src="./irfan-bayuaji-uhekY5RkpWM-unsplash.jpg" />
+							<div className="w-16 rounded-full ">
+								<Image src={LawangSewu} alt="Lawang Sewu" placeholder="blur" />
 							</div>
 						</div>
 					</div>
