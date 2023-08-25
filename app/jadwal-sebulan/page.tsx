@@ -86,7 +86,10 @@ export default async function JadwalSebulan() {
 			<div className="flex justify-center w-full">
 				<div className="grid grid-cols-1 lg:grid-cols-3 lg:col-span-3 2xl:grid-cols-6 2xl:col-span-6 gap-4 p-4">
 					{fetchedJadwalSebulan.data.jadwal.map((semuaJadwal: any) => (
-						<div className="card w-60 bg-base-100 shadow-xl">
+						<div
+							className="card w-60 bg-base-100 shadow-xl"
+							key={semuaJadwal.date}
+						>
 							<div className="card-body">
 								<h2 className="card-title">
 									{ubahTanggalKeNamaHari(semuaJadwal.date)}
