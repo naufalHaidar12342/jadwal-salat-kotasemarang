@@ -3,7 +3,7 @@ import { MdPhotoCameraBack } from "react-icons/md";
 export default function Credits() {
 	return (
 		<div className="w-full flex flex-col justify-center gap-2 items-center">
-			<div className="hero h-48 bg-base-200 rounded-2xl">
+			<div className="hero h-40 bg-base-200 rounded-2xl">
 				<div className="hero-content text-center">
 					<div className="max-w-md">
 						<h1 className="text-4xl font-bold">Credits</h1>
@@ -16,7 +16,7 @@ export default function Credits() {
 			</div>
 			{/* favicon credits */}
 			<div className="collapse bg-base-200">
-				<input type="checkbox" className="peer" />
+				<input type="checkbox" className="peer" name="1st-collapsible" />
 				<div className="collapse-title bg-info-content text-info peer-checked:bg-neutral peer-checked:text-neutral-content">
 					⭐ favicon (logo kecil pada tab browser)
 				</div>
@@ -37,10 +37,9 @@ export default function Credits() {
 
 			{/* foto lawang sewu di index/homepage */}
 			<div className="collapse bg-base-200">
-				<input type="checkbox" className="peer" />
+				<input type="checkbox" className="peer" name="2nd-collapsible" />
 				<div className="collapse-title bg-info-content text-info peer-checked:bg-neutral peer-checked:text-neutral-content">
-					<MdPhotoCameraBack className="inline w-5 h-5" /> Lawang Sewu pada
-					halaman utama
+					<MdPhotoCameraBack className="inline w-5 h-5" /> Lawang Sewu
 				</div>
 				<div className="collapse-content bg-info-content text-info peer-checked:bg-neutral peer-checked:text-neutral-content">
 					<p>
@@ -66,7 +65,7 @@ export default function Credits() {
 				</div>
 			</div>
 			<div className="collapse bg-base-200">
-				<input type="checkbox" className="peer" />
+				<input type="checkbox" className="peer" name="3rd-collapsible" />
 				<div className="collapse-title bg-info-content text-info peer-checked:bg-neutral peer-checked:text-neutral-content">
 					<AiTwotoneApi className="inline w-5 h-5" /> API Jadwal Salat
 				</div>
