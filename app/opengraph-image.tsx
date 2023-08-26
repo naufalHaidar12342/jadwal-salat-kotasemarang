@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import { ImageResponse } from "next/server";
 
 export const runtime = "edge";
@@ -11,11 +10,10 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image() {
-	// font
-	const interLight = await fetch(
-		new URL("./fonts/Inter-Light.ttf", import.meta.url)
-	).then((res) => res.arrayBuffer());
-
+	// Font
+	const interLight = fetch(new URL("./Inter-Light.ttf", import.meta.url)).then(
+		(res) => res.arrayBuffer()
+	);
 	return new ImageResponse(
 		(
 			<div
@@ -34,7 +32,16 @@ export default async function Image() {
 			</div>
 		),
 		{
-			...size,
+			width: size.width,
+			height: size.height,
+			fonts: [
+				{
+					data: await interLight,
+					name: "Inter",
+					weight: 300,
+					style: "normal",
+				},
+			],
 		}
 	);
 }
