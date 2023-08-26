@@ -1,14 +1,10 @@
 import { Metadata } from "next/types";
-import {
-	bulanHariIni,
-	bulanSingkatHariIni,
-	tahunHariIni,
-} from "../data/tanggal";
-import { apiEndpoint } from "../data/apiendpoint";
-import { kotaSemarangID } from "../data/kotasemarangid";
-import { fetchOptions } from "../data/fetchoptions";
+import { bulanHariIni, bulanSingkatHariIni, tahunHariIni } from "@data/tanggal";
+import { apiEndpoint } from "@data/apiendpoint";
+import { kotaSemarangID } from "@data/kotasemarangid";
+import { fetchOptions } from "@data/fetchoptions";
 import Image from "next/image";
-import { LawangSewu } from "../components/gambar";
+import { LawangSewu } from "@components/gambar";
 import { DateTime } from "luxon";
 import Link from "next/link";
 
