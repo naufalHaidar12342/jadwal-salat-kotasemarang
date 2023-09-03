@@ -7,9 +7,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
 	title: "Jadwal Salat Semarang",
 	description: "Jadwal salat untuk Kota Semarang 📿",
-	// icons: {
-	// 	icon: "./icon32x32.png",
-	// },
 };
 
 export default function RootLayout({
