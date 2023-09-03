@@ -3,7 +3,7 @@ import { MdToday, MdCalendarMonth, MdInfo } from "react-icons/md";
 export default function NavigationBar() {
 	return (
 		<div className="navbar bg-base-100">
-			<div className="navbar-start">
+			<div className="navbar-start text-lg">
 				{/* tampilan untuk mobile device (smartphone, tab, ipad) */}
 				<div className="dropdown">
 					<label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -24,7 +24,7 @@ export default function NavigationBar() {
 					</label>
 					<ul
 						tabIndex={0}
-						className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-xl"
+						className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 "
 					>
 						<li>
 							<Link href={"/"}>
