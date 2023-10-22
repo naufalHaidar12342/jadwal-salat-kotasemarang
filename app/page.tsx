@@ -11,12 +11,8 @@ import { fetchOptions } from "./data/fetchoptions";
 import SalatInfo from "./components/salatinfo";
 import JamDigital from "./components/jamdigital";
 
-async function DefaultOpenGraphImage() {
-	if (!process.env.HYGRAPH_API_KEY) {
-		throw new Error("HYGRAPH_API_KEY is not defined");
-	}
-
-	const images = await fetch(process.env.HYGRAPH_API_KEY, {
+async function defaultOpenGraphImage() {
+	const images = await fetch(`${process.env.HYGRAPH_API_KEY}`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -34,7 +30,7 @@ async function DefaultOpenGraphImage() {
 	return images.data.assets;
 }
 export async function generateMetadata() {
-	const imageForOpenGraph = await DefaultOpenGraphImage();
+	const imageForOpenGraph = await defaultOpenGraphImage();
 	return {
 		title: "Jadwal Salat Kota Semarang",
 		description: `Waktu salat untuk hari ${namaHariIni}, ${tanggalHariIni} ${bulanHariIni} ${tahunHariIni} di Kota Semarang, Jawa Tengah.`,
