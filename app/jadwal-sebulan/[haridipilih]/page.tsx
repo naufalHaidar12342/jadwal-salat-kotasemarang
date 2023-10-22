@@ -1,5 +1,5 @@
 import SalatInfo from "@components/salatinfo";
-import { PRAYER_API_ENDPOINT } from "@data/apiendpoint";
+import { HYGRAPH_API, PRAYER_API_ENDPOINT } from "@data/apiendpoint";
 import { fetchOptions } from "@data/fetchoptions";
 import { KOTA_SEMARANG_ID } from "@data/kotasemarangid";
 import { DateTime } from "luxon";
@@ -9,11 +9,7 @@ type Props = {
 };
 
 async function DefaultOpenGraphImage() {
-	if (!process.env.HYGRAPH_API_KEY) {
-		throw new Error("HYGRAPH_API_KEY is not defined");
-	}
-
-	const images = await fetch(process.env.HYGRAPH_API_KEY, {
+	const images = await fetch(HYGRAPH_API, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

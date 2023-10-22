@@ -1,5 +1,6 @@
 import { AiTwotoneApi } from "react-icons/ai";
 import { MdPhotoCameraBack } from "react-icons/md";
+import { HYGRAPH_API } from "../data/apiendpoint";
 
 export async function generateMetadata() {
 	const aboutPageImage = await AboutOpenGraphImage();
@@ -23,10 +24,7 @@ export async function generateMetadata() {
 	};
 }
 async function AboutOpenGraphImage() {
-	if (!process.env.HYGRAPH_API_KEY) {
-		throw new Error("HYGRAPH_API_KEY is not defined");
-	}
-	const images = await fetch(process.env.HYGRAPH_API_KEY, {
+	const images = await fetch(HYGRAPH_API, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

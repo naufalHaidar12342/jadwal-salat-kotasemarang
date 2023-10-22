@@ -1,5 +1,5 @@
 import { bulanHariIni, bulanSingkatHariIni, tahunHariIni } from "@data/tanggal";
-import { PRAYER_API_ENDPOINT } from "@data/apiendpoint";
+import { HYGRAPH_API, PRAYER_API_ENDPOINT } from "@data/apiendpoint";
 import { KOTA_SEMARANG_ID } from "@data/kotasemarangid";
 import { fetchOptions } from "@data/fetchoptions";
 import Image from "next/image";
@@ -8,11 +8,7 @@ import { DateTime } from "luxon";
 import Link from "next/link";
 
 async function DefaultOpenGraphImage() {
-	if (!process.env.HYGRAPH_API_KEY) {
-		throw new Error("HYGRAPH_API_KEY is not defined");
-	}
-
-	const images = await fetch(process.env.HYGRAPH_API_KEY, {
+	const images = await fetch(HYGRAPH_API, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
