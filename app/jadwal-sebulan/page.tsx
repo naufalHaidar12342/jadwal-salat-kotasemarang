@@ -34,6 +34,7 @@ export async function generateMetadata() {
 		openGraph: {
 			title: "Jadwal Salat Kota Semarang",
 			description: `Waktu salat untuk bulan ${bulanHariIni} ${tahunHariIni} di Kota Semarang, Jawa Tengah.`,
+			url: "https://salat-kotasemarang.vercel.app/jadwal-sebulan",
 			images: [
 				{
 					url: imageForOpenGraph.url,

@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: Props) {
 	return {
 		title: `${tanggalKeHariLengkap} 🗓️`,
 		description: `Waktu salat untuk hari ${tanggalKeHariLengkap} di Kota Semarang, Jawa Tengah.`,
+		url: "https://salat-kotasemarang.vercel.app/jadwal-sebulan/${params.haridipilih}",
 		openGraph: {
 			title: `${tanggalKeHariLengkap} 🗓️`,
 			description: `Waktu salat untuk hari ${tanggalKeHariLengkap} di Kota Semarang, Jawa Tengah.`,

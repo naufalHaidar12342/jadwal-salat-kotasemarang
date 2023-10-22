@@ -12,6 +12,7 @@ export async function generateMetadata() {
 			title: "Credits",
 			description:
 				"Credits/attribution untuk komponen yang digunakan di web ini.",
+			url: "https://salat-kotasemarang.vercel.app/credits",
 			images: [
 				{
 					url: aboutPageImage.url,
