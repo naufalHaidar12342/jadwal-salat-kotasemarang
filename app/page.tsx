@@ -1,4 +1,4 @@
-import { PRAYER_API_ENDPOINT } from "@data/apiendpoint";
+import { HYGRAPH_API, PRAYER_API_ENDPOINT } from "@data/apiendpoint";
 import { KOTA_SEMARANG_ID } from "@data/kotasemarangid";
 import {
 	bulanHariIni,
@@ -12,7 +12,7 @@ import SalatInfo from "./components/salatinfo";
 import JamDigital from "./components/jamdigital";
 
 async function defaultOpenGraphImage() {
-	const images = await fetch(`${process.env.HYGRAPH_API_KEY}`, {
+	const images = await fetch(HYGRAPH_API, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
