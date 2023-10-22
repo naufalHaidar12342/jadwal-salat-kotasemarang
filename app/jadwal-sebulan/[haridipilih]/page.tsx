@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props) {
 			description: `Waktu salat untuk hari ${tanggalKeHariLengkap} di Kota Semarang, Jawa Tengah.`,
 			images: [
 				{
-					url: imageForOpenGraph.url,
+					url: "https://media.graphassets.com/3AzKDgWjTUKN0CVMvI40",
 					alt: "Photo of Moslem praying in Masjid Sultan Singapore, by SR on Unsplash (https://unsplash.com/photos/5C0e03S-2UI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)",
 					width: 1200,
 					height: 630,

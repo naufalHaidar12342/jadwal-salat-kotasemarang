@@ -15,7 +15,7 @@ export async function generateMetadata() {
 			url: "https://salat-kotasemarang.vercel.app/credits",
 			images: [
 				{
-					url: aboutPageImage.url,
+					url: "https://media.graphassets.com/me9kN2hR2iHQSXWrkBF6",
 					alt: "Foto oleh Priscilla Du Preez 🇨🇦 di Unsplash (https://unsplash.com/photos/OEdkPaxYMXU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)",
 					width: 1200,
 					height: 630,
