@@ -22,10 +22,12 @@ export default function SalatInfo({ propsSalatInfo }: any) {
 						</div>
 					</div>
 					<div className="stat-value">
-						{propsSalatInfo.data.jadwal[jadwalSalat]}
+						{propsSalatInfo.data.jadwal[jadwalSalat]} WIB
 					</div>
-					<div className="stat-title capitalize">{[jadwalSalat]}</div>
-					<div className="stat-desc text-secondary"></div>
+					<div className="stat-title text-2xl capitalize">{[jadwalSalat]}</div>
+					<div className="stat-desc text-secondary">
+						{/* nanti diisi berapa selisih waktu dari jam sekarang dan waktu salatnya */}
+					</div>
 				</div>
 			))}
 		</div>

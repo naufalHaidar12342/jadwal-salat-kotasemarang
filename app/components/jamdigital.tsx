@@ -1,15 +1,23 @@
-import React from "react";
-import { detikHariIni, jamHariIni, menitHariIni } from "../data/tanggal";
+"use client";
+import { useEffect, useState } from "react";
+import {
+	detikHariIni,
+	jamHariIni,
+	menitHariIni,
+	sekarang,
+} from "@data/tanggal";
+import { DateTime } from "luxon";
 
 export default function JamDigital() {
-	const [jamDigital, setJamDigital] = React.useState("");
+	const [jamDigital, setJamDigital] = useState(
+		DateTime.local().setZone("Asia/Jakarta")
+	);
 
-	React.useEffect(() => {
-		let jamLengkap = jamHariIni + ":" + menitHariIni + ":" + detikHariIni;
-		const timer = setInterval(() => {
-			setJamDigital(jamLengkap);
+	useEffect(() => {
+		const intervals = setInterval(() => {
+			setJamDigital(DateTime.local().setZone("Asia/Jakarta"));
 		}, 1000);
-		return () => clearInterval(timer);
+		return () => clearInterval(intervals);
 	}, [jamDigital]);
-	return <span>{jamDigital}</span>;
+	return jamDigital.toLocaleString(DateTime.TIME_24_WITH_SECONDS);
 }
