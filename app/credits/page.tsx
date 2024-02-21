@@ -1,6 +1,49 @@
 import { AiTwotoneApi } from "react-icons/ai";
 import { MdPhotoCameraBack } from "react-icons/md";
-export default function Credits() {
+import { HYGRAPH_API } from "../data/apiendpoint";
+
+export async function generateMetadata() {
+	const aboutPageImage = await AboutOpenGraphImage();
+	return {
+		title: "Credits",
+		description:
+			"Credits/attribution untuk komponen yang digunakan di web ini.",
+		openGraph: {
+			title: "Credits",
+			description:
+				"Credits/attribution untuk komponen yang digunakan di web ini.",
+			url: "https://salat-kotasemarang.vercel.app/credits",
+			images: [
+				{
+					url: "https://media.graphassets.com/me9kN2hR2iHQSXWrkBF6",
+					alt: "Foto oleh Priscilla Du Preez 🇨🇦 di Unsplash (https://unsplash.com/photos/OEdkPaxYMXU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)",
+					width: 1200,
+					height: 630,
+				},
+			],
+		},
+	};
+}
+async function AboutOpenGraphImage() {
+	const images = await fetch(HYGRAPH_API, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			query: `query OpenGraphImg {
+                assets(where: {fileName_contains: "priscilla"}) {
+                    url
+                }
+            }`,
+		}),
+	})
+		.then((res) => res.json())
+		.catch((errors) => console.error(errors));
+	return images.data.assets;
+}
+
+export default async function Credits() {
 	return (
 		<div className="w-full flex flex-col justify-center gap-2 items-center">
 			<div className="hero h-40 bg-base-200 rounded-2xl">

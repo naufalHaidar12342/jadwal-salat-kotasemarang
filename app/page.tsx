@@ -1,5 +1,5 @@
-import { apiEndpoint } from "./data/apiendpoint";
-import { kotaSemarangID } from "./data/kotasemarangid";
+import { HYGRAPH_API, PRAYER_API_ENDPOINT } from "@data/apiendpoint";
+import { KOTA_SEMARANG_ID } from "@data/kotasemarangid";
 import {
 	bulanHariIni,
 	bulanSingkatHariIni,
@@ -9,10 +9,50 @@ import {
 } from "./data/tanggal";
 import { fetchOptions } from "./data/fetchoptions";
 import SalatInfo from "./components/salatinfo";
+import JamDigital from "./components/jamdigital";
+
+async function defaultOpenGraphImage() {
+	const images = await fetch(HYGRAPH_API, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			query: `query OpenGraphImg {
+				assets(where: {fileName_contains: "prayer"}) {
+					url
+				}
+			}`,
+		}),
+	})
+		.then((res) => res.json())
+		.catch((errors) => console.error(errors));
+	return images.data.assets;
+}
+export async function generateMetadata() {
+	const imageForOpenGraph = await defaultOpenGraphImage();
+	return {
+		title: "Jadwal Salat Kota Semarang",
+		description: `Waktu salat untuk hari ${namaHariIni}, ${tanggalHariIni} ${bulanHariIni} ${tahunHariIni} di Kota Semarang, Jawa Tengah.`,
+		openGraph: {
+			title: "Jadwal Salat Kota Semarang",
+			description: `Waktu salat untuk hari ${namaHariIni}, ${tanggalHariIni} ${bulanHariIni} ${tahunHariIni} di Kota Semarang, Jawa Tengah.`,
+			url: "https://salat-kotasemarang.vercel.app/",
+			images: [
+				{
+					url: `https://media.graphassets.com/3AzKDgWjTUKN0CVMvI40`,
+					alt: "Photo of Moslem praying in Masjid Sultan Singapore, by SR on Unsplash (https://unsplash.com/photos/5C0e03S-2UI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)",
+					width: 1200,
+					height: 630,
+				},
+			],
+		},
+	};
+}
 
 async function fetchJadwalHariIni() {
 	const fetchingJadwalHariIni = await fetch(
-		`${apiEndpoint}${kotaSemarangID}/${tahunHariIni}/${bulanSingkatHariIni}/${tanggalHariIni}`,
+		`${PRAYER_API_ENDPOINT}${KOTA_SEMARANG_ID}/${tahunHariIni}/${bulanSingkatHariIni}/${tanggalHariIni}`,
 		fetchOptions
 	);
 	return fetchingJadwalHariIni.json();
@@ -25,20 +65,24 @@ export default async function JadwalHariIni() {
 			<div className="hero h-45 bg-base-200 rounded-2xl mb-5">
 				<div className="hero-content text-center">
 					<div className="max-w-md">
-						<h1 className="text-4xl font-bold pt-6">
-							{namaHariIni}, {tanggalHariIni} {bulanHariIni} {tahunHariIni}{" "}
-						</h1>
-						<p className="pt-6">🗺️ Kota Semarang, Jawa Tengah</p>
-						<p className="pb-6">
-							<a
-								href="https://www.google.com/maps/search/masjid+di+kota+semarang/@-7.0232716,110.4857935,15z/data=!3m1!4b1?entry=ttu"
-								target="_blank"
-								referrerPolicy="no-referrer"
-								className="link link-hover link-info"
-							>
-								Cari masjid di Kota Semarang
-							</a>
-						</p>
+						<div className="py-5">
+							<h1 className="text-3xl font-semibold">
+								{namaHariIni}, {tanggalHariIni} {bulanHariIni} {tahunHariIni}{" "}
+							</h1>
+							<p className="text-4xl font-bold">
+								<JamDigital /> WIB{" "}
+							</p>
+							<p className="">
+								<a
+									href="https://www.google.com/maps/search/masjid+di+kota+semarang/@-7.0232716,110.4857935,15z/data=!3m1!4b1?entry=ttu"
+									target="_blank"
+									referrerPolicy="no-referrer"
+									className="link link-hover link-info"
+								>
+									🗺️ Cari masjid di Kota Semarang
+								</a>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

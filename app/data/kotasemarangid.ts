@@ -1,1 +1,1 @@
-export const kotaSemarangID = 1433;
+export const KOTA_SEMARANG_ID = 1433;

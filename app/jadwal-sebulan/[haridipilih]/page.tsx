@@ -1,17 +1,51 @@
-import SalatInfo from "@/app/components/salatinfo";
-import { apiEndpoint } from "@/app/data/apiendpoint";
-import { fetchOptions } from "@/app/data/fetchoptions";
-import { kotaSemarangID } from "@/app/data/kotasemarangid";
+import SalatInfo from "@components/salatinfo";
+import { HYGRAPH_API, PRAYER_API_ENDPOINT } from "@data/apiendpoint";
+import { fetchOptions } from "@data/fetchoptions";
+import { KOTA_SEMARANG_ID } from "@data/kotasemarangid";
 import { DateTime } from "luxon";
 
 type Props = {
 	params: { haridipilih: string };
 };
 
+async function DefaultOpenGraphImage() {
+	const images = await fetch(HYGRAPH_API, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			query: `query OpenGraphImg {
+				assets(where: {fileName_contains: "prayer"}) {
+					url
+				}
+			}`,
+		}),
+	})
+		.then((res) => res.json())
+		.catch((errors) => console.error(errors));
+	return images.data.assets;
+}
+
 export async function generateMetadata({ params }: Props) {
 	const tanggalKeHariLengkap = await paramsKeHariLengkap(params.haridipilih);
+	const imageForOpenGraph = await DefaultOpenGraphImage();
 	return {
 		title: `${tanggalKeHariLengkap} 🗓️`,
+		description: `Waktu salat untuk hari ${tanggalKeHariLengkap} di Kota Semarang, Jawa Tengah.`,
+		url: "https://salat-kotasemarang.vercel.app/jadwal-sebulan/${params.haridipilih}",
+		openGraph: {
+			title: `${tanggalKeHariLengkap} 🗓️`,
+			description: `Waktu salat untuk hari ${tanggalKeHariLengkap} di Kota Semarang, Jawa Tengah.`,
+			images: [
+				{
+					url: "https://media.graphassets.com/3AzKDgWjTUKN0CVMvI40",
+					alt: "Photo of Moslem praying in Masjid Sultan Singapore, by SR on Unsplash (https://unsplash.com/photos/5C0e03S-2UI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)",
+					width: 1200,
+					height: 630,
+				},
+			],
+		},
 	};
 }
 
@@ -23,7 +57,7 @@ async function fetchJadwalHariDipilih(tanggalDipilih: string) {
 	let bulanTerpilihHariIni = tanggalTerpilih.toFormat("MM");
 	let tahunTerpilihHariIni = tanggalTerpilih.toFormat("yyyy");
 	const jadwalTerpilih = await fetch(
-		`${apiEndpoint}${kotaSemarangID}/${tahunTerpilihHariIni}/${bulanTerpilihHariIni}/${tanggalTerpilihHariIni}`,
+		`${PRAYER_API_ENDPOINT}${KOTA_SEMARANG_ID}/${tahunTerpilihHariIni}/${bulanTerpilihHariIni}/${tanggalTerpilihHariIni}`,
 		fetchOptions
 	);
 	return jadwalTerpilih.json();
