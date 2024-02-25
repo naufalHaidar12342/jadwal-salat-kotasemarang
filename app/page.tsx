@@ -17,6 +17,7 @@ async function defaultOpenGraphImage() {
 		headers: {
 			"Content-Type": "application/json",
 		},
+		cache: "no-cache",
 		body: JSON.stringify({
 			query: `query OpenGraphImg {
 				assets(where: {fileName_contains: "prayer"}) {
