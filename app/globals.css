@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+	.unactive-button {
+		@apply text-white-shade bg-palatinate-blue-semitransparent;
+	}
+	.active-button {
+		@apply text-white-shade bg-palatinate-blue;
+	}
+	.toplefta-gradient {
+		background-image: radial-gradient(
+			circle closest-corner at top left,
+			#4075b3,
+			#d9d9d900
+		);
+	}
+	.bottomright-gradient {
+		background-image: radial-gradient(
+			circle farthest-corner at bottom right,
+			#3b38b0,
+			#d9d9d900
+		);
+	}
+	.corners-gradient {
+		background-image: radial-gradient(
+				circle closest-corner at top left,
+				#4075b3,
+				#d9d9d900
+			),
+			radial-gradient(
+				circle farthest-corner at bottom right,
+				#3b38b0,
+				#d9d9d900
+			);
+	}
+	.custom-gradients {
+		@apply bg-gradient-to-br from-darkgraymetal to-richblack;
+		background-image: radial-gradient(
+				circle closest-corner at top left,
+				#4075b3,
+				#d9d9d900
+			),
+			radial-gradient(
+				circle farthest-corner at bottom right,
+				#3b38b0,
+				#d9d9d900
+			);
+	}
+}

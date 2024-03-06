@@ -1,18 +1,30 @@
 import { AiTwotoneApi } from "react-icons/ai";
 import { MdPhotoCameraBack } from "react-icons/md";
-import { HYGRAPH_API } from "../data/apiendpoint";
+import { getOpenGraphImageDatas } from "@/app/libraries/opengraph-imagedatas";
+import { METADATA_BASEURL } from "../libraries/metadata-baseurl";
+import { METADATA_ROBOTS } from "../libraries/metadata-robots";
 
 export async function generateMetadata() {
-	const aboutPageImage = await AboutOpenGraphImage();
+	const [fetchedOpenGraphImageDatas] = await getOpenGraphImageDatas();
+	const openGraphImageUrl =
+		fetchedOpenGraphImageDatas.projectCoverImageAttribution.attributionImage
+			.url;
+	const openGraphImageAttribution =
+		fetchedOpenGraphImageDatas.projectCoverImageAttribution.attributionMarkdown;
+	const openGraphProject = fetchedOpenGraphImageDatas.projectTitle;
+	const openGraphProjectSource =
+		fetchedOpenGraphImageDatas.projectsRepositoryLink;
 	return {
-		title: "Credits",
+		title: "Attribution",
 		description:
-			"Credits/attribution untuk komponen yang digunakan di web ini.",
+			"Attribution/credits untuk komponen yang digunakan dalam proyek ",
+		...METADATA_BASEURL,
+		...METADATA_ROBOTS,
 		openGraph: {
 			title: "Credits",
 			description:
 				"Credits/attribution untuk komponen yang digunakan di web ini.",
-			url: "https://salat-kotasemarang.vercel.app/credits",
+
 			images: [
 				{
 					url: "https://media.graphassets.com/me9kN2hR2iHQSXWrkBF6",
@@ -23,24 +35,6 @@ export async function generateMetadata() {
 			],
 		},
 	};
-}
-async function AboutOpenGraphImage() {
-	const images = await fetch(HYGRAPH_API, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			query: `query OpenGraphImg {
-                assets(where: {fileName_contains: "priscilla"}) {
-                    url
-                }
-            }`,
-		}),
-	})
-		.then((res) => res.json())
-		.catch((errors) => console.error(errors));
-	return images.data.assets;
 }
 
 export default async function Credits() {

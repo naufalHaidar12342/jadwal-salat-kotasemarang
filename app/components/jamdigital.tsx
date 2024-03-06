@@ -5,7 +5,7 @@ import {
 	jamHariIni,
 	menitHariIni,
 	sekarang,
-} from "@data/tanggal";
+} from "@/app/libraries/tanggal";
 import { DateTime } from "luxon";
 
 export default function JamDigital() {

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { jamHariIni, menitHariIni } from "../data/tanggal";
+import { jamHariIni, menitHariIni } from "../libraries/tanggal";
 import { LawangSewu } from "./gambar";
 
 export default function SalatInfo({ propsSalatInfo }: any) {
