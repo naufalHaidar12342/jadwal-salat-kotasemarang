@@ -14,9 +14,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props) {
-	const [fetchedHariLengkap] = await Promise.all([
-		paramsKeHariLengkap(params.haridipilih),
-	]);
+	const fetchedHariLengkap = await paramsKeHariLengkap(params.haridipilih);
 	const [fetchedOpenGraphImageDatas] = await getOpenGraphImageDatas();
 	const openGraphImageUrl =
 		fetchedOpenGraphImageDatas.projectCoverImageAttribution.attributionImage
@@ -31,6 +29,7 @@ export async function generateMetadata({ params }: Props) {
 		openGraph: {
 			title: `${fetchedHariLengkap} | Jadwal Salat Kota Semarang`,
 			description: `Jadwal salat untuk hari ${fetchedHariLengkap} di Kota Semarang, Jawa Tengah.`,
+			url: `${METADATA_BASEURL.metadataBase}jadwal-sebulan/${params.haridipilih}`,
 			images: [
 				{
 					url: openGraphImageUrl,
@@ -43,7 +42,7 @@ export async function generateMetadata({ params }: Props) {
 	};
 }
 
-export async function fetchJadwalHariDipilih(tanggalDipilih: string) {
+async function getJadwalSalatHariDipilih(tanggalDipilih: string) {
 	let tanggalTerpilih = DateTime.fromFormat(tanggalDipilih, "yyyy-MM-dd")
 		.setLocale("id-ID")
 		.setZone("Asia/Jakarta");
@@ -64,7 +63,7 @@ export async function fetchJadwalHariDipilih(tanggalDipilih: string) {
 	return jadwalTerpilih;
 }
 
-export async function paramsKeHariLengkap(tanggalDariParams: string) {
+async function paramsKeHariLengkap(tanggalDariParams: string) {
 	let tanggalKeHariLengkap = DateTime.fromFormat(
 		tanggalDariParams,
 		"yyyy-MM-dd"
@@ -75,8 +74,8 @@ export async function paramsKeHariLengkap(tanggalDariParams: string) {
 	return tanggalKeHariLengkap;
 }
 
-export default async function HariDipilih({ params }: any) {
-	const fetchedJadwalHariDipilih = await fetchJadwalHariDipilih(
+export default async function HariDipilih({ params }: Props) {
+	const fetchedJadwalHariDipilih = await getJadwalSalatHariDipilih(
 		params.haridipilih
 	);
 	const salatSubuhHariDipilih = fetchedJadwalHariDipilih.data.jadwal.subuh;

@@ -16,19 +16,17 @@ export async function generateMetadata() {
 		fetchedOpenGraphImageDatas.projectsRepositoryLink;
 	return {
 		title: "Attribution",
-		description:
-			"Attribution/credits untuk komponen yang digunakan dalam proyek ",
+		description: `Attribution/credits untuk komponen yang digunakan dalam proyek "${openGraphProject}", sebuah proyek iseng saya yang dapat dilihat sumbernya di ${openGraphProjectSource}.`,
 		...METADATA_BASEURL,
 		...METADATA_ROBOTS,
 		openGraph: {
-			title: "Credits",
-			description:
-				"Credits/attribution untuk komponen yang digunakan di web ini.",
-
+			title: "Attribution",
+			description: `Attribution/credits untuk komponen yang digunakan dalam proyek "${openGraphProject}", sebuah proyek iseng saya yang dapat dilihat sumbernya di ${openGraphProjectSource}.`,
+			url: `${METADATA_BASEURL.metadataBase}attribution`,
 			images: [
 				{
-					url: "https://media.graphassets.com/me9kN2hR2iHQSXWrkBF6",
-					alt: "Foto oleh Priscilla Du Preez 🇨🇦 di Unsplash (https://unsplash.com/photos/OEdkPaxYMXU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)",
+					url: openGraphImageUrl,
+					alt: `${openGraphImageAttribution}`,
 					width: 1200,
 					height: 630,
 				},

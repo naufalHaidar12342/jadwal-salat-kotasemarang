@@ -28,6 +28,7 @@ export async function generateMetadata() {
 		openGraph: {
 			title: "Bulan Ini | Jadwal Salat Kota Semarang",
 			description: `Jadwal salat bulan ini, ${bulanHariIni}, di Kota Semarang dengan data yang diambil dari API myQuran v2`,
+			url: `${METADATA_BASEURL.metadataBase}jadwal-sebulan`,
 			images: [
 				{
 					url: openGraphImageUrl,
@@ -40,7 +41,7 @@ export async function generateMetadata() {
 	};
 }
 
-export async function fetchJadwalSebulan() {
+async function fetchJadwalSebulan() {
 	const fetchingJadwalSebulan = await fetch(
 		`${PRAYER_API_ENDPOINT}${KOTA_SEMARANG_ID}/${tahunHariIni}/${bulanSingkatHariIni}`,
 		{
@@ -54,7 +55,7 @@ export async function fetchJadwalSebulan() {
 	return fetchingJadwalSebulan.data.jadwal;
 }
 
-export async function ubahTanggalKeNamaHari(tanggalDiubah: string) {
+async function ubahTanggalKeNamaHari(tanggalDiubah: string) {
 	let tanggalKeNamaHari = DateTime.fromFormat(tanggalDiubah, "yyyy-MM-dd")
 		.setZone("Asia/Jakarta")
 		.setLocale("id-ID")
@@ -62,7 +63,7 @@ export async function ubahTanggalKeNamaHari(tanggalDiubah: string) {
 	return tanggalKeNamaHari;
 }
 
-export async function ubahFormatTanggal(formatTanggalAwal: string) {
+async function ubahFormatTanggal(formatTanggalAwal: string) {
 	let formatAkhir = DateTime.fromFormat(formatTanggalAwal, "yyyy-MM-dd")
 		.setZone("Asia/Jakarta")
 		.setLocale("id-ID")
@@ -72,7 +73,7 @@ export async function ubahFormatTanggal(formatTanggalAwal: string) {
 
 export default async function JadwalSebulan() {
 	const fetchedJadwalSebulan = await fetchJadwalSebulan();
-	console.log("fetchedJadwalSebulan", fetchedJadwalSebulan);
+	// console.log("fetchedJadwalSebulan", fetchedJadwalSebulan);
 
 	return (
 		<div className="w-full max-w-screen-xl flex flex-col justify-center items-center pb-24">

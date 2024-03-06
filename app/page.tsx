@@ -34,6 +34,7 @@ export async function generateMetadata() {
 		openGraph: {
 			title: "Hari ini | Jadwal Salat Kota Semarang",
 			description: `Jadwal salat hari ini di Kota Semarang dengan data yang diambil dari API myQuran v2.`,
+			url: `${METADATA_BASEURL.metadataBase}`,
 			images: [
 				{
 					url: openGraphImageUrl,
@@ -46,7 +47,7 @@ export async function generateMetadata() {
 	};
 }
 
-export async function fetchJadwalHariIni() {
+async function fetchJadwalHariIni() {
 	const fetchingJadwalHariIni = await fetch(
 		`${PRAYER_API_ENDPOINT}${KOTA_SEMARANG_ID}/${tahunHariIni}/${bulanSingkatHariIni}/${tanggalHariIni}`,
 		{
