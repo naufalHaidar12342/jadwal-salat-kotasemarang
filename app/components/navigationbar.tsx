@@ -1,72 +1,48 @@
+"use client";
+import { Button } from "@nextui-org/button";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { MdToday, MdCalendarMonth, MdInfo } from "react-icons/md";
+
 export default function NavigationBar() {
+	const pathSelected = usePathname();
+	const pageMenu = [
+		{
+			pageName: "Hari Ini",
+			pagePath: "/",
+			icon: <MdCalendarMonth />,
+		},
+		{
+			pageName: "Bulan Ini",
+			pagePath: "/jadwal-sebulan",
+			icon: <MdCalendarMonth />,
+		},
+		{
+			pageName: "Attribution",
+			pagePath: "/attribution",
+			icon: <MdInfo />,
+		},
+	];
 	return (
-		<div className="navbar bg-base-100">
-			<div className="navbar-start text-lg">
-				{/* tampilan untuk mobile device (smartphone, tab, ipad) */}
-				<div className="dropdown">
-					<label tabIndex={0} className="btn btn-ghost lg:hidden">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							className="h-5 w-5"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="M4 6h16M4 12h8m-8 6h16"
-							/>
-						</svg>
-					</label>
-					<ul
-						tabIndex={0}
-						className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 "
+		<div className="w-full h-full flex flex-col md:flex-row items-center justify-center pt-24 pb-16 ">
+			<nav className="flex flex-col lg:flex-row gap-8 xl:gap-16 items-center justify-center w-full xl:w-2/3 2xl:w-1/2">
+				{pageMenu.map((page, index) => (
+					<Button
+						key={index}
+						as={Link}
+						href={page.pagePath}
+						size="lg"
+						className={`${
+							pathSelected === page.pagePath
+								? "active-button"
+								: "unactive-button"
+						} text-2xl font-normal w-full h-[76px] hover:shadow-xl`}
+						startContent={page.icon}
 					>
-						<li>
-							<Link href={"/"}>
-								<MdToday className="inline" /> Hari ini
-							</Link>
-						</li>
-						<li>
-							<Link href={"/jadwal-sebulan"}>
-								<MdCalendarMonth className="inline" />
-								Bulan ini
-							</Link>
-						</li>
-						<li>
-							<Link href={"/credits"}>
-								<MdInfo className="inline" />
-								Attribution
-							</Link>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div className="navbar-center hidden lg:flex">
-				<ul className="menu menu-horizontal px-1 text-lg">
-					<li>
-						<Link href={"/"}>
-							<MdToday className="inline" />
-							Hari ini
-						</Link>
-					</li>
-					<li>
-						<Link href={"/jadwal-sebulan"}>
-							<MdCalendarMonth className="inline" />
-							Bulan ini
-						</Link>
-					</li>
-					<li>
-						<Link href={"/credits"}>
-							<MdInfo className="inline" /> Attribution
-						</Link>
-					</li>
-				</ul>
-			</div>
+						{page.pageName}
+					</Button>
+				))}
+			</nav>
 		</div>
 	);
 }
