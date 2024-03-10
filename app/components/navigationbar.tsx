@@ -25,7 +25,7 @@ export default function NavigationBar() {
 	];
 	return (
 		<div className="w-full h-full flex flex-col md:flex-row items-center justify-center pt-24 pb-16 ">
-			<div className="flex flex-col lg:flex-row gap-8 xl:gap-16 items-center justify-center w-full xl:w-2/3 2xl:w-1/2">
+			<nav className="flex flex-col lg:flex-row gap-8 xl:gap-16 items-center justify-center w-full xl:w-2/3 2xl:w-1/2">
 				{pageMenu.map((page, index) => (
 					<Button
 						key={index}
@@ -36,13 +36,13 @@ export default function NavigationBar() {
 							pathSelected === page.pagePath
 								? "active-button"
 								: "unactive-button"
-						} text-2xl font-normal w-full h-[76px]`}
+						} text-2xl font-normal w-full h-[76px] hover:shadow-xl`}
 						startContent={page.icon}
 					>
 						{page.pageName}
 					</Button>
 				))}
-			</div>
+			</nav>
 		</div>
 	);
 }

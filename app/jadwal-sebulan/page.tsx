@@ -91,7 +91,7 @@ export default async function JadwalSebulan() {
 							>
 								{ubahTanggalKeNamaHari(jadwalSehari.date)}
 							</NextLink>
-							<TiArrowForward className="ml-3" />
+							<TiArrowForward className="opacity-0 group-hover:opacity-100 group-hover:transition group-hover:ease-in group-hover:delay-75 group-hover:translate-x-3" />
 						</div>
 						<span className="text-xl font-normal">
 							{ubahFormatTanggal(jadwalSehari.date)}

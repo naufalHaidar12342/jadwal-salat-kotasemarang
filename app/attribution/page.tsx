@@ -3,6 +3,9 @@ import { MdPhotoCameraBack } from "react-icons/md";
 import { getOpenGraphImageDatas } from "@/app/libraries/opengraph-imagedatas";
 import { METADATA_BASEURL } from "../libraries/metadata-baseurl";
 import { METADATA_ROBOTS } from "../libraries/metadata-robots";
+import { Divider } from "@nextui-org/divider";
+import CardFlip from "./cardflip";
+import { Link } from "@nextui-org/link";
 
 export async function generateMetadata() {
 	const [fetchedOpenGraphImageDatas] = await getOpenGraphImageDatas();
@@ -37,85 +40,70 @@ export async function generateMetadata() {
 
 export default async function Credits() {
 	return (
-		<div className="w-full flex flex-col justify-center gap-2 items-center">
-			<div className="hero h-40 bg-base-200 rounded-2xl">
-				<div className="hero-content text-center">
-					<div className="max-w-md">
-						<h1 className="text-4xl font-bold">Credits</h1>
-						<p className="py-6">
-							Berikut <i>attribution</i> dari beberapa sumber yang digunakan di
-							web ini.
-						</p>
+		<div className="w-full h-full max-w-screen-xl flex flex-col">
+			<div className="w-full h-full flex flex-col items-center">
+				<div className="flex flex-col">
+					<h2 className="font-bold text-2xl xl:text-5xl">
+						Credits/Attribution
+					</h2>
+					<Divider className="w-full bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent my-8" />
+					<span className="text-2xl font-normal">
+						Berikut <i>attribution</i> dari beberapa sumber yang digunakan dalam
+						proyek ini.
+					</span>
+				</div>
+				<div className="flex flex-col gap-5 py-14 md:flex-row">
+					<div
+						className="flex flex-col justify-center w-full rounded-xl border-2 border-indigo-300 p-5"
+						// style={{
+						// 	background:
+						// 		"linear-gradient(white, white)padding-box,linear-gradient(to bottom, #7087D9,#6E8CF60D)border-box",
+						// 	border: "1px solid transparent",
+						// }}
+					>
+						<Link
+							href="https://www.flaticon.com/free-icon/pray_3167301?term=prayer&page=1&position=50&origin=tag&related_id=3167301"
+							target="_blank"
+							showAnchorIcon
+							className="text-white-shade text-xl"
+						>
+							favicons
+						</Link>
 					</div>
-				</div>
-			</div>
-			{/* favicon credits */}
-			<div className="collapse bg-base-200">
-				<input type="checkbox" className="peer" name="1st-collapsible" />
-				<div className="collapse-title bg-info-content text-info peer-checked:bg-neutral peer-checked:text-neutral-content">
-					⭐ favicon (logo kecil pada tab browser)
-				</div>
-				<div className="collapse-content bg-info-content text-info peer-checked:bg-neutral peer-checked:text-neutral-content">
-					<p>
-						<a
-							href="https://www.flaticon.com/free-icons/prayer"
-							title="prayer icons"
+					<div
+						className="flex flex-col justify-center w-full rounded-xl border-2 border-indigo-300 p-5"
+						// style={{
+						// 	background:
+						// 		"linear-gradient(white, white)padding-box,linear-gradient(to bottom, #7087D9,#6E8CF60D)border-box",
+						// 	border: "1px solid transparent",
+						// }}
+					>
+						<Link
+							href="https://react-icons.github.io/react-icons/"
 							target="_blank"
-							referrerPolicy="no-referrer"
-							className="link link-hover"
+							showAnchorIcon
+							className="text-white-shade text-xl"
 						>
-							favicon created by amonrat rungreangfangsai - Flaticon
-						</a>
-					</p>
-				</div>
-			</div>
-
-			{/* foto lawang sewu di index/homepage */}
-			<div className="collapse bg-base-200">
-				<input type="checkbox" className="peer" name="2nd-collapsible" />
-				<div className="collapse-title bg-info-content text-info peer-checked:bg-neutral peer-checked:text-neutral-content">
-					<MdPhotoCameraBack className="inline w-5 h-5" /> Lawang Sewu
-				</div>
-				<div className="collapse-content bg-info-content text-info peer-checked:bg-neutral peer-checked:text-neutral-content">
-					<p>
-						&quot;Lawang Sewu&quot; by{" "}
-						<a
-							href="https://unsplash.com/@irfanbayuaji?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+							react-icons
+						</Link>
+					</div>
+					<div
+						className="flex flex-col justify-center w-full rounded-xl border-2 border-indigo-300 p-5"
+						// style={{
+						// 	background:
+						// 		"linear-gradient(white, white)padding-box,linear-gradient(to bottom, #7087D9,#6E8CF60D)border-box",
+						// 	border: "1px solid transparent",
+						// }}
+					>
+						<Link
+							href="https://documenter.getpostman.com/view/841292/2s9YsGittd#intro"
 							target="_blank"
-							referrerPolicy="no-referrer"
-							className="link link-hover"
+							showAnchorIcon
+							className="text-white-shade text-xl"
 						>
-							Irfan Bayuaji
-						</a>{" "}
-						on{" "}
-						<a
-							href="https://unsplash.com/photos/uhekY5RkpWM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-							target="_blank"
-							referrerPolicy="no-referrer"
-							className="link link-hover"
-						>
-							Unsplash
-						</a>
-					</p>
-				</div>
-			</div>
-			<div className="collapse bg-base-200">
-				<input type="checkbox" className="peer" name="3rd-collapsible" />
-				<div className="collapse-title bg-info-content text-info peer-checked:bg-neutral peer-checked:text-neutral-content">
-					<AiTwotoneApi className="inline w-5 h-5" /> API Jadwal Salat
-				</div>
-				<div className="collapse-content bg-info-content text-info peer-checked:bg-neutral peer-checked:text-neutral-content">
-					<p>
-						<a
-							href="https://documenter.getpostman.com/view/841292/Tz5p7yHS#intro"
-							target="_blank"
-							referrerPolicy="no-referrer"
-							className="link link-hover"
-						>
-							API myQuran.com
-						</a>{" "}
-						oleh Hasanudin H. Syafaat dan tim
-					</p>
+							API myQuran v2
+						</Link>
+					</div>
 				</div>
 			</div>
 		</div>
