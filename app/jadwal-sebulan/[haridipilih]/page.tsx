@@ -90,7 +90,7 @@ export default async function HariDipilih({ params }: Props) {
 				<div className="text-4xl font-semibold text-center lg:text-start px-4 lg:px-24">
 					<h2>{paramsKeHariLengkap(params.haridipilih)}</h2>
 				</div>
-				<div className="flex flex-col justify-center items-center lg:flex-row flex-wrap gap-8 xl:gap-16 px-24 py-20">
+				<div className="flex flex-col justify-center items-center lg:flex-row flex-wrap xl:gap-16 xl:px-24 py-20">
 					<div className="flex gap-16" aria-label="Waktu salat subuh hari ini">
 						<div className="flex flex-col justify-center items-center xl:items-start">
 							<span className="text-xl font-normal">Subuh</span>
@@ -170,10 +170,10 @@ export default async function HariDipilih({ params }: Props) {
 					href="https://www.google.com/maps/search/masjid+di+kota+semarang/@-7.0094024,110.3428084,15z/data=!3m1!4b1?entry=ttu"
 					target="_blank"
 					size="lg"
-					className="w-auto h-[4.5rem] xl:h-16 lg:w-2/3 text-xl font-normal mx-auto active-button"
+					className="w-auto text-wrap h-[4.5rem] xl:h-16 text-xl font-normal mx-auto mt-4 active-button"
 					endContent={<FaLocationArrow />}
 				>
-					Masjid di Kota Semarang
+					Cari Masjid
 				</Button>
 			</div>
 		</div>
