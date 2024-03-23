@@ -58,7 +58,7 @@ async function getJadwalSalatHariDipilih(tanggalDipilih: string) {
 	)
 		.then((res) => res.json())
 		.catch((err) => console.error(err));
-	console.log("isi jadwalTerpilih", jadwalTerpilih);
+	// console.log("isi jadwalTerpilih", jadwalTerpilih);
 
 	return jadwalTerpilih;
 }
