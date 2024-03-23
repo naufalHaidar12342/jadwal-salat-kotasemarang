@@ -22,6 +22,10 @@ export default function Footer() {
 					strijunk
 				</a>
 			</p>
+			<p>
+				Waktu adzan dapat lebih cepat atau lebih lambat dari waktu salat yang
+				ada disini.
+			</p>
 		</div>
 	);
 }
