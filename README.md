@@ -16,8 +16,8 @@ Awalnya, pengembangan website ini berasal dari ide iseng saya untuk menerapkan p
 
 ### Konfigurasi Website ⚙️
 
-- Framework: Next.js
-- Frontend framework: daisyUI
+- Framework: Next.js (dengan TypeScript)
+- Frontend framework: NextUI
 - CSS Library: Tailwind CSS
 - Hosting: Vercel
 
