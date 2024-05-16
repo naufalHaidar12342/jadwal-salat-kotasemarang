@@ -13,6 +13,7 @@ import { getOpenGraphImageDatas } from "../libraries/opengraph-imagedatas";
 import { Divider } from "@nextui-org/divider";
 import { TiArrowForward } from "react-icons/ti";
 import { Link } from "@nextui-org/link";
+import { revalidateTag } from "next/cache";
 export async function generateMetadata() {
 	const [fetchedOpenGraphImageDatas] = await getOpenGraphImageDatas();
 	const openGraphImageUrl =
@@ -46,7 +47,7 @@ async function fetchJadwalSebulan() {
 		`${PRAYER_API_ENDPOINT}${KOTA_SEMARANG_ID}/${tahunHariIni}/${bulanSingkatHariIni}`,
 		{
 			method: "GET",
-			cache: "no-cache",
+			next: { tags: ["jadwal-sebulan"] },
 		}
 	)
 		.then((res) => res.json())
@@ -75,7 +76,10 @@ async function ubahFormatTanggal(formatTanggalAwal: string) {
 export default async function JadwalSebulan() {
 	const fetchedJadwalSebulan = await fetchJadwalSebulan();
 	// console.log("fetchedJadwalSebulan", fetchedJadwalSebulan);
-
+	async function revalidateJadwalSebulan() {
+		"use server";
+		revalidateTag("jadwal-sebulan");
+	}
 	return (
 		<div className="w-full max-w-screen-xl flex flex-col justify-center items-center pb-24">
 			<h2 className="text-4xl font-semibold">
