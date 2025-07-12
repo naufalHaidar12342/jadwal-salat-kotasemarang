@@ -13,6 +13,7 @@ import { getOpenGraphImageDatas } from "../libraries/opengraph-imagedatas";
 import { Divider } from "@nextui-org/divider";
 import { TiArrowForward } from "react-icons/ti";
 import { Link } from "@nextui-org/link";
+
 export async function generateMetadata() {
 	const [fetchedOpenGraphImageDatas] = await getOpenGraphImageDatas();
 	const openGraphImageUrl =
@@ -46,7 +47,7 @@ async function fetchJadwalSebulan() {
 		`${PRAYER_API_ENDPOINT}${KOTA_SEMARANG_ID}/${tahunHariIni}/${bulanSingkatHariIni}`,
 		{
 			method: "GET",
-			cache: "no-cache",
+			next: { tags: ["jadwal-sebulan"] },
 		}
 	)
 		.then((res) => res.json())
