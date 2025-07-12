@@ -12,8 +12,8 @@ import JamDigital from "@/app/components/jamdigital";
 import { getOpenGraphImageDatas } from "./libraries/opengraph-imagedatas";
 import { METADATA_BASEURL } from "./libraries/metadata-baseurl";
 import { METADATA_ROBOTS } from "./libraries/metadata-robots";
-import { Divider } from "@nextui-org/divider";
-import { Button } from "@nextui-org/button";
+import { Divider } from "@heroui/divider";
+import { Button } from "@heroui/button";
 import { FaLocationArrow } from "react-icons/fa6";
 import Link from "next/link";
 

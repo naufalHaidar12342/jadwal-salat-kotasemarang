@@ -10,9 +10,9 @@ import NextLink from "next/link";
 import { METADATA_BASEURL } from "../libraries/metadata-baseurl";
 import { METADATA_ROBOTS } from "../libraries/metadata-robots";
 import { getOpenGraphImageDatas } from "../libraries/opengraph-imagedatas";
-import { Divider } from "@nextui-org/divider";
+import { Divider } from "@heroui/divider";
 import { TiArrowForward } from "react-icons/ti";
-import { Link } from "@nextui-org/link";
+import { Link } from "@heroui/link";
 
 export async function generateMetadata() {
 	const [fetchedOpenGraphImageDatas] = await getOpenGraphImageDatas();

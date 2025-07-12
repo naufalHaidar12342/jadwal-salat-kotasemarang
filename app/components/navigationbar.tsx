@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@nextui-org/button";
+import { Button } from "@heroui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdToday, MdCalendarMonth, MdInfo } from "react-icons/md";
