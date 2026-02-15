@@ -3,8 +3,6 @@ import { KOTA_SEMARANG_ID } from "@/app/libraries/kotasemarangid";
 import { METADATA_BASEURL } from "@/app/libraries/metadata-baseurl";
 import { METADATA_ROBOTS } from "@/app/libraries/metadata-robots";
 import { getOpenGraphImageDatas } from "@/app/libraries/opengraph-imagedatas";
-import { Button } from "@nextui-org/button";
-import { Divider } from "@nextui-org/divider";
 import { DateTime } from "luxon";
 import Link from "next/link";
 import { FaLocationArrow } from "react-icons/fa6";
@@ -54,7 +52,7 @@ async function getJadwalSalatHariDipilih(tanggalDipilih: string) {
 		{
 			method: "GET",
 			cache: "no-cache",
-		}
+		},
 	)
 		.then((res) => res.json())
 		.catch((err) => console.error(err));
@@ -66,7 +64,7 @@ async function getJadwalSalatHariDipilih(tanggalDipilih: string) {
 async function paramsKeHariLengkap(tanggalDariParams: string) {
 	let tanggalKeHariLengkap = DateTime.fromFormat(
 		tanggalDariParams,
-		"yyyy-MM-dd"
+		"yyyy-MM-dd",
 	)
 		.setLocale("id-ID")
 		.setZone("Asia/Jakarta")
@@ -76,7 +74,7 @@ async function paramsKeHariLengkap(tanggalDariParams: string) {
 
 export default async function HariDipilih({ params }: Props) {
 	const fetchedJadwalHariDipilih = await getJadwalSalatHariDipilih(
-		params.haridipilih
+		params.haridipilih,
 	);
 	const salatSubuhHariDipilih = fetchedJadwalHariDipilih.data.jadwal.subuh;
 	const salatDzuhurHariDipilih = fetchedJadwalHariDipilih.data.jadwal.dzuhur;
@@ -97,15 +95,9 @@ export default async function HariDipilih({ params }: Props) {
 							<span className="text-3xl font-bold">
 								{salatSubuhHariDipilih}
 							</span>
-							<Divider
-								orientation="horizontal"
-								className="lg:hidden my-8 w-[155px] bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent"
-							/>
+							<hr className="lg:hidden my-8 w-[155px] rounded-sm h-0.5 bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
-						<Divider
-							orientation="vertical"
-							className="hidden lg:flex lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent"
-						/>
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 					<div className="flex gap-16" aria-label="Waktu salat dzuhur hari ini">
 						<div className="flex flex-col justify-center items-center xl:items-start">
@@ -113,15 +105,9 @@ export default async function HariDipilih({ params }: Props) {
 							<span className="text-3xl font-bold">
 								{salatDzuhurHariDipilih}
 							</span>
-							<Divider
-								orientation="horizontal"
-								className="lg:hidden my-8 w-[155px] bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent"
-							/>
+							<hr className="lg:hidden my-8 w-[155px] rounded-sm h-0.5 bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
-						<Divider
-							orientation="vertical"
-							className="hidden lg:flex lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent"
-						/>
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 					<div className="flex gap-16" aria-label="Waktu salat ashar hari ini">
 						<div className="flex flex-col justify-center items-center xl:items-start">
@@ -129,52 +115,40 @@ export default async function HariDipilih({ params }: Props) {
 							<span className="text-3xl font-bold">
 								{salatAsharHariDipilih}
 							</span>
-							<Divider
-								orientation="horizontal"
-								className="lg:hidden my-8 w-[155px] bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent"
-							/>
+							<hr className="lg:hidden my-8 w-[155px] rounded-sm h-0.5 bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
-						<Divider
-							orientation="vertical"
-							className="hidden lg:flex lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent"
-						/>
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
+					</div>
+					<div className="flex gap-16" aria-label="Waktu salat ashar hari ini">
+						<div className="flex flex-col justify-center items-center xl:items-start">
+							<span className="text-xl font-normal">Maghrib</span>
+							<span className="text-3xl font-bold">
+								{salatMaghribHariDipilih}
+							</span>
+							<hr className="lg:hidden my-8 w-[155px] rounded-sm h-0.5 bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
+						</div>
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 					<div
 						className="flex gap-16"
 						aria-label="Waktu salat maghrib hari ini"
 					>
 						<div className="flex flex-col justify-center items-center xl:items-start">
-							<span className="text-xl font-normal">Maghrib</span>
-							<span className="text-3xl font-bold">
-								{salatMaghribHariDipilih}
-							</span>
-							<Divider
-								orientation="horizontal"
-								className="lg:hidden my-8 w-[155px] bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent"
-							/>
-						</div>
-						<Divider
-							orientation="vertical"
-							className="hidden lg:flex lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent"
-						/>
-					</div>
-					<div className="flex gap-16" aria-label="Waktu salat isya hari ini">
-						<div className="flex flex-col">
 							<span className="text-xl font-normal">Isya</span>
 							<span className="text-3xl font-bold">{salatIsyaHariDipilih}</span>
+							<hr className="lg:hidden my-8 w-[155px] rounded-sm h-0.5 bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 				</div>
-				<Button
-					as={Link}
+				<Link
 					href="https://www.google.com/maps/search/masjid+di+kota+semarang/@-7.0094024,110.3428084,15z/data=!3m1!4b1?entry=ttu"
 					target="_blank"
-					size="lg"
-					className="w-auto text-wrap h-[4.5rem] xl:h-16 text-xl font-normal mx-auto mt-4 active-button"
-					endContent={<FaLocationArrow />}
+					className="w-auto flex items-center gap-x-2 text-wrap h-[4.5rem] xl:h-16 text-xl font-normal mx-auto mt-4 rounded-lg p-4 active-button"
 				>
 					Cari Masjid
-				</Button>
+					<FaLocationArrow />
+				</Link>
 			</div>
 		</div>
 	);

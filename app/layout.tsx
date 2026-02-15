@@ -19,7 +19,7 @@ export default function RootLayout({
 						Jadwal Salat Kota Semarang
 					</h2>
 					<NavigationBar />
-					<Providers>{children}</Providers>
+					{children}
 					<Footer />
 				</main>
 			</body>
