@@ -46,7 +46,9 @@ async function fetchJadwalSebulan() {
 		`${PRAYER_API_ENDPOINT}${KOTA_SEMARANG_ID}/${tahunHariIni}/${bulanSingkatHariIni}`,
 		{
 			method: "GET",
-			cache: "no-cache",
+			next: {
+				revalidate: 60,
+			},
 		},
 	)
 		.then((res) => res.json())

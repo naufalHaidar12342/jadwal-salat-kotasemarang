@@ -4,15 +4,20 @@ import { METADATA_BASEURL } from "@/app/libraries/metadata-baseurl";
 import { METADATA_ROBOTS } from "@/app/libraries/metadata-robots";
 import { getOpenGraphImageDatas } from "@/app/libraries/opengraph-imagedatas";
 import { DateTime } from "luxon";
+import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { FaLocationArrow } from "react-icons/fa6";
 
 type Props = {
-	params: { haridipilih: string };
+	params: Promise<{ haridipilih: string }>;
 };
 
-export async function generateMetadata({ params }: Props) {
-	const fetchedHariLengkap = await paramsKeHariLengkap(params.haridipilih);
+export async function generateMetadata(
+	{ params }: Props,
+	parent: ResolvingMetadata,
+): Promise<Metadata> {
+	const { haridipilih: selectedDay } = await params;
+	const fetchedHariLengkap = await paramsKeHariLengkap(selectedDay);
 	const [fetchedOpenGraphImageDatas] = await getOpenGraphImageDatas();
 	const openGraphImageUrl =
 		fetchedOpenGraphImageDatas.projectCoverImageAttribution.attributionImage
@@ -27,7 +32,7 @@ export async function generateMetadata({ params }: Props) {
 		openGraph: {
 			title: `${fetchedHariLengkap} | Jadwal Salat Kota Semarang`,
 			description: `Jadwal salat untuk hari ${fetchedHariLengkap} di Kota Semarang, Jawa Tengah.`,
-			url: `${METADATA_BASEURL.metadataBase}jadwal-sebulan/${params.haridipilih}`,
+			url: `${METADATA_BASEURL.metadataBase}jadwal-sebulan/${selectedDay}`,
 			images: [
 				{
 					url: openGraphImageUrl,
@@ -51,7 +56,9 @@ async function getJadwalSalatHariDipilih(tanggalDipilih: string) {
 		`${PRAYER_API_ENDPOINT}${KOTA_SEMARANG_ID}/${tahunTerpilihHariIni}/${bulanTerpilihHariIni}/${tanggalTerpilihHariIni}`,
 		{
 			method: "GET",
-			cache: "no-cache",
+			next: {
+				revalidate: 60,
+			},
 		},
 	)
 		.then((res) => res.json())
@@ -73,9 +80,8 @@ async function paramsKeHariLengkap(tanggalDariParams: string) {
 }
 
 export default async function HariDipilih({ params }: Props) {
-	const fetchedJadwalHariDipilih = await getJadwalSalatHariDipilih(
-		params.haridipilih,
-	);
+	const { haridipilih } = await params;
+	const fetchedJadwalHariDipilih = await getJadwalSalatHariDipilih(haridipilih);
 	const salatSubuhHariDipilih = fetchedJadwalHariDipilih.data.jadwal.subuh;
 	const salatDzuhurHariDipilih = fetchedJadwalHariDipilih.data.jadwal.dzuhur;
 	const salatAsharHariDipilih = fetchedJadwalHariDipilih.data.jadwal.ashar;
@@ -86,7 +92,7 @@ export default async function HariDipilih({ params }: Props) {
 		<div className="w-full max-w-screen-xl h-full flex bg-gradient-to-br from-[#43489799] via-[#191E24] to-[#43489799] border-2 border-indigo-800 rounded-[20px]">
 			<div className="w-full h-full flex flex-col bg-gradient-to-bl from-[#191E2480] to-[#4E83C31A] py-[60px] rounded-[20px] ">
 				<div className="text-4xl font-semibold text-center lg:text-start px-4 lg:px-24">
-					<h2>{paramsKeHariLengkap(params.haridipilih)}</h2>
+					<h2>{paramsKeHariLengkap(haridipilih)}</h2>
 				</div>
 				<div className="flex flex-col justify-center items-center lg:flex-row flex-wrap xl:gap-16 xl:px-24 py-20">
 					<div className="flex gap-16" aria-label="Waktu salat subuh hari ini">
