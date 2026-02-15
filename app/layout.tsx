@@ -2,7 +2,6 @@ import "./globals.css";
 import { Inter, Open_Sans } from "next/font/google";
 import Footer from "@/app/components/footer";
 import NavigationBar from "./components/navigationbar";
-import { Providers } from "./libraries/providers";
 const inter = Inter({ subsets: ["latin"] });
 const openSans = Open_Sans({ subsets: ["latin"] });
 
