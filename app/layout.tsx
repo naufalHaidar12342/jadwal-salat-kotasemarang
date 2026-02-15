@@ -13,7 +13,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" className="dark">
 			<body className={openSans.className}>
-				<main className="min-h-screen h-full w-full flex flex-col justify-center items-center p-5 lg:px-10 lg:py-10 bg-gradient-to-br from-darkgraymetal to-richblack">
+				<main className="min-h-screen h-full w-full flex flex-col justify-center items-center p-5 lg:px-10 lg:py-10 bg-gradient-to-br from-darkgraymetal to-richblack text-white">
 					<h2 className="text-5xl font-bold text-white">
 						Jadwal Salat Kota Semarang
 					</h2>
