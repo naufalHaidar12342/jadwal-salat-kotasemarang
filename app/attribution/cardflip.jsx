@@ -24,10 +24,10 @@ export default function CardFlip() {
 					transition={{ duration: 0.5, animationDirection: "normal" }}
 					onAnimationComplete={() => setisAnimated(false)}
 				>
-					<div className="flip-card-front w-full h-full bg-cover border-1 rounded-xl p-4">
+					<div className="flip-card-front w-full h-full bg-cover border rounded-xl p-4">
 						<h2>Icons</h2>
 					</div>
-					<div className="flip-card-back w-full h-full bg-cover border-1 p-4">
+					<div className="flip-card-back w-full h-full bg-cover border p-4">
 						<p>
 							Lorem ipsum, dolor sit amet consectetur adipisicing elit.
 							Cupiditate vero placeat soluta rem! Voluptatum ab, in repudiandae

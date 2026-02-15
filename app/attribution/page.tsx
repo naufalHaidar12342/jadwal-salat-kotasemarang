@@ -39,13 +39,13 @@ export async function generateMetadata() {
 
 export default async function Credits() {
 	return (
-		<div className="w-full h-full max-w-screen-xl flex flex-col">
+		<div className="w-full h-full max-w-(--breakpoint-xl) flex flex-col">
 			<div className="w-full h-full flex flex-col items-center">
 				<div className="flex flex-col">
 					<h2 className="font-bold text-2xl xl:text-5xl">
 						Credits/Attribution
 					</h2>
-					<hr className="w-full bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent my-8 h-0.5" />
+					<hr className="w-full bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent my-8 h-0.5" />
 					<span className="text-2xl font-normal">
 						Berikut <i>attribution</i> dari beberapa sumber yang digunakan dalam
 						proyek ini.

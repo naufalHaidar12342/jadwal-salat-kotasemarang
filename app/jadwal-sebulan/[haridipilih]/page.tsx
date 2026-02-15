@@ -89,8 +89,8 @@ export default async function HariDipilih({ params }: Props) {
 	const salatIsyaHariDipilih = fetchedJadwalHariDipilih.data.jadwal.isya;
 
 	return (
-		<div className="w-full max-w-screen-xl h-full flex bg-gradient-to-br from-[#43489799] via-[#191E24] to-[#43489799] border-2 border-indigo-800 rounded-[20px]">
-			<div className="w-full h-full flex flex-col bg-gradient-to-bl from-[#191E2480] to-[#4E83C31A] py-[60px] rounded-[20px] ">
+		<div className="w-full max-w-(--breakpoint-xl) h-full flex bg-linear-to-br from-[#43489799] via-[#191E24] to-[#43489799] border-2 border-indigo-800 rounded-[20px]">
+			<div className="w-full h-full flex flex-col bg-linear-to-bl from-[#191E2480] to-[#4E83C31A] py-[60px] rounded-[20px] ">
 				<div className="text-4xl font-semibold text-center lg:text-start px-4 lg:px-24">
 					<h2>{paramsKeHariLengkap(haridipilih)}</h2>
 				</div>
@@ -101,9 +101,9 @@ export default async function HariDipilih({ params }: Props) {
 							<span className="text-3xl font-bold">
 								{salatSubuhHariDipilih}
 							</span>
-							<hr className="lg:hidden my-8 w-[155px] rounded-sm h-0.5 bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
+							<hr className="lg:hidden my-8 w-[155px] rounded-xs h-0.5 bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 					<div className="flex gap-16" aria-label="Waktu salat dzuhur hari ini">
 						<div className="flex flex-col justify-center items-center xl:items-start">
@@ -111,9 +111,9 @@ export default async function HariDipilih({ params }: Props) {
 							<span className="text-3xl font-bold">
 								{salatDzuhurHariDipilih}
 							</span>
-							<hr className="lg:hidden my-8 w-[155px] rounded-sm h-0.5 bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
+							<hr className="lg:hidden my-8 w-[155px] rounded-xs h-0.5 bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 					<div className="flex gap-16" aria-label="Waktu salat ashar hari ini">
 						<div className="flex flex-col justify-center items-center xl:items-start">
@@ -121,9 +121,9 @@ export default async function HariDipilih({ params }: Props) {
 							<span className="text-3xl font-bold">
 								{salatAsharHariDipilih}
 							</span>
-							<hr className="lg:hidden my-8 w-[155px] rounded-sm h-0.5 bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
+							<hr className="lg:hidden my-8 w-[155px] rounded-xs h-0.5 bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 					<div className="flex gap-16" aria-label="Waktu salat ashar hari ini">
 						<div className="flex flex-col justify-center items-center xl:items-start">
@@ -131,9 +131,9 @@ export default async function HariDipilih({ params }: Props) {
 							<span className="text-3xl font-bold">
 								{salatMaghribHariDipilih}
 							</span>
-							<hr className="lg:hidden my-8 w-[155px] rounded-sm h-0.5 bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
+							<hr className="lg:hidden my-8 w-[155px] rounded-xs h-0.5 bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 					<div
 						className="flex gap-16"
@@ -142,15 +142,15 @@ export default async function HariDipilih({ params }: Props) {
 						<div className="flex flex-col justify-center items-center xl:items-start">
 							<span className="text-xl font-normal">Isya</span>
 							<span className="text-3xl font-bold">{salatIsyaHariDipilih}</span>
-							<hr className="lg:hidden my-8 w-[155px] rounded-sm h-0.5 bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
+							<hr className="lg:hidden my-8 w-[155px] rounded-xs h-0.5 bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 				</div>
 				<Link
 					href="https://www.google.com/maps/search/masjid+di+kota+semarang/@-7.0094024,110.3428084,15z/data=!3m1!4b1?entry=ttu"
 					target="_blank"
-					className="w-auto flex items-center gap-x-2 text-wrap h-[4.5rem] xl:h-16 text-xl font-normal mx-auto mt-4 rounded-lg p-4 active-button"
+					className="w-auto flex items-center gap-x-2 text-wrap h-18 xl:h-16 text-xl font-normal mx-auto mt-4 rounded-lg p-4 active-button"
 				>
 					Cari Masjid
 					<FaLocationArrow />

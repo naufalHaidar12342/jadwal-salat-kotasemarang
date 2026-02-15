@@ -79,7 +79,7 @@ export default async function JadwalSebulan() {
 	// console.log("fetchedJadwalSebulan", fetchedJadwalSebulan);
 
 	return (
-		<div className="w-full max-w-screen-xl flex flex-col justify-center items-center pb-24">
+		<div className="w-full max-w-(--breakpoint-xl) flex flex-col justify-center items-center pb-24">
 			<h2 className="text-4xl font-semibold">
 				{bulanHariIni} {tahunHariIni}
 			</h2>
@@ -99,7 +99,7 @@ export default async function JadwalSebulan() {
 						<span className="text-xl font-normal">
 							{ubahFormatTanggal(jadwalSehari.date)}
 						</span>
-						<hr className="mx-auto bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent my-12 h-1 w-full rounded-sm" />
+						<hr className="mx-auto bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent my-12 h-1 w-full rounded-xs" />
 					</div>
 				))}
 			</div>

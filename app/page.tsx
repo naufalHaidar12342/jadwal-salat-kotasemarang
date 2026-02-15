@@ -71,8 +71,8 @@ export default async function JadwalHariIni() {
 	const jadwalSalatIsya = fetchedJadwalHariIni.data.jadwal.isya;
 
 	return (
-		<div className="w-full max-w-screen-xl h-full flex flex-col bg-gradient-to-br from-[#43489799] via-[#191E24] to-[#43489799] border-2 border-indigo-800 rounded-[20px]">
-			<div className="w-full h-full flex flex-col bg-gradient-to-bl from-[#191E2480] to-[#4E83C31A] py-[60px] rounded-[20px] ">
+		<div className="w-full max-w-(--breakpoint-xl) h-full flex flex-col bg-linear-to-br from-[#43489799] via-[#191E24] to-[#43489799] border-2 border-indigo-800 rounded-[20px]">
+			<div className="w-full h-full flex flex-col bg-linear-to-bl from-[#191E2480] to-[#4E83C31A] py-[60px] rounded-[20px] ">
 				<div className="text-4xl font-semibold text-center lg:text-start px-4 py-4 lg:px-24">
 					<h2>
 						{namaHariIni}, {tanggalHariIni} {bulanHariIni} {tahunHariIni}{" "}
@@ -84,25 +84,25 @@ export default async function JadwalHariIni() {
 						<div className="flex flex-col justify-center items-center xl:items-start">
 							<span className="text-xl font-normal">Subuh</span>
 							<span className="text-3xl font-bold">{jadwalSalatSubuh}</span>
-							<hr className="lg:hidden rounded-sm my-8 h-0.5 w-[155px] bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
+							<hr className="lg:hidden rounded-xs my-8 h-0.5 w-[155px] bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 					<div className="flex gap-16" aria-label="Waktu salat dzuhur hari ini">
 						<div className="flex flex-col justify-center items-center xl:items-start">
 							<span className="text-xl font-normal">Dzuhur</span>
 							<span className="text-3xl font-bold">{jadwalSalatDzuhur}</span>
-							<hr className="lg:hidden rounded-sm my-8 h-0.5 w-[155px] bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
+							<hr className="lg:hidden rounded-xs my-8 h-0.5 w-[155px] bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 					<div className="flex gap-16" aria-label="Waktu salat ashar hari ini">
 						<div className="flex flex-col justify-center items-center xl:items-start">
 							<span className="text-xl font-normal">Ashar</span>
 							<span className="text-3xl font-bold">{jadwalSalatAshar}</span>
-							<hr className="lg:hidden rounded-sm my-8 h-0.5 w-[155px] bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
+							<hr className="lg:hidden rounded-xs my-8 h-0.5 w-[155px] bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 					<div
 						className="flex gap-16"
@@ -111,9 +111,9 @@ export default async function JadwalHariIni() {
 						<div className="flex flex-col justify-center items-center xl:items-start">
 							<span className="text-xl font-normal">Maghrib</span>
 							<span className="text-3xl font-bold">{jadwalSalatMaghrib}</span>
-							<hr className="lg:hidden rounded-sm my-8 h-0.5 w-[155px] bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
+							<hr className="lg:hidden rounded-xs my-8 h-0.5 w-[155px] bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
 						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-gradient-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
+						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
 					</div>
 					<div className="flex gap-16" aria-label="Waktu salat isya hari ini">
 						<div className="flex flex-col">
@@ -125,7 +125,7 @@ export default async function JadwalHariIni() {
 				<Link
 					href="https://www.google.com/maps/search/masjid+di+kota+semarang/@-7.0094024,110.3428084,15z/data=!3m1!4b1?entry=ttu"
 					target="_blank"
-					className="h-[4.5rem] flex items-center text-wrap xl:h-16 text-xl font-normal mx-auto mt-4 gap-x-2 p-4 active-button rounded-md hover:scale-110 transition-transform"
+					className="h-18 flex items-center text-wrap xl:h-16 text-xl font-normal mx-auto mt-4 gap-x-2 p-4 active-button rounded-md hover:scale-110 transition-transform"
 				>
 					Cari Masjid
 					<FaLocationArrow />
