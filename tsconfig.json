@@ -29,7 +29,8 @@
 		"**/*.tsx",
 		".next/types/**/*.ts",
 		"app/attribution/cardflip.jsx",
-		".next/dev/types/**/*.ts"
+		".next/dev/types/**/*.ts",
+		"./app/**/*"
 	],
 	"exclude": ["node_modules"]
 }
