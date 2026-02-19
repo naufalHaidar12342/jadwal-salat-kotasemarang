@@ -99,7 +99,7 @@ export default async function JadwalSebulan() {
 						<span className="text-xl font-normal">
 							{ubahFormatTanggal(jadwalSehari.date)}
 						</span>
-						<hr className="mx-auto bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent my-12 h-1 w-full rounded-xs" />
+						<div className="mx-auto bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent my-12 h-1 w-full rounded-xs" />
 					</div>
 				))}
 			</div>

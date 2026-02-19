@@ -10,7 +10,7 @@ import { DateTime } from "luxon";
 
 export default function JamDigital() {
 	const [jamDigital, setJamDigital] = useState(
-		DateTime.local().setZone("Asia/Jakarta")
+		DateTime.local().setZone("Asia/Jakarta"),
 	);
 
 	useEffect(() => {
@@ -19,5 +19,9 @@ export default function JamDigital() {
 		}, 1000);
 		return () => clearInterval(intervals);
 	}, [jamDigital]);
-	return jamDigital.toLocaleString(DateTime.TIME_24_WITH_SECONDS);
+	return (
+		<div className="text-3xl font-bold">
+			{jamDigital.toLocaleString(DateTime.TIME_24_WITH_SECONDS)}
+		</div>
+	);
 }

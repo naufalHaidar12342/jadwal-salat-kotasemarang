@@ -2,19 +2,18 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdToday, MdCalendarMonth, MdInfo } from "react-icons/md";
-
-export default function NavigationBar() {
+export default function MobileNavigationBar() {
 	const pathSelected = usePathname();
 	const pageMenu = [
-		{
-			pageName: "Today",
-			pagePath: "/",
-			icon: <MdToday />,
-		},
 		{
 			pageName: "This Month",
 			pagePath: "/jadwal-sebulan",
 			icon: <MdCalendarMonth />,
+		},
+		{
+			pageName: "Today",
+			pagePath: "/",
+			icon: <MdToday />,
 		},
 		{
 			pageName: "About",
@@ -23,18 +22,18 @@ export default function NavigationBar() {
 		},
 	];
 	return (
-		<nav className="hidden lg:flex lg:w-full lg:pt-14 lg:gap-x-16">
+		<nav className="bottom-0 fixed h-20.5 w-full bg-salatsmg-secondary flex border-salatsmg-primary/25  snap-start lg:hidden">
 			{pageMenu.map((page, index) => (
 				<Link
 					key={index}
 					href={page.pagePath}
 					className={`${
 						pathSelected === page.pagePath
-							? "bg-salatsmg-primary"
-							: "bg-salatsmg-primary/25 inset-ring-2 inset-ring-salatsmg-primary/25"
-					} flex items-center justify-center gap-x-2 text-2xl font-normal w-full h-19 rounded-[1.25rem] transition-all duration-500 ease-in`}
+							? "border-b-5 border-salatsmg-primary"
+							: " bg-salatsmg-primary/25"
+					} flex flex-col items-center pt-2 gap-y-2 text-xl font-normal w-full overflow-hidden transition-all duration-110 ease-in`}
 				>
-					{page.icon}
+					<span className="text-2xl">{page.icon}</span>
 					{page.pageName}
 				</Link>
 			))}

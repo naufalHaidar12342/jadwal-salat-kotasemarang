@@ -8,14 +8,14 @@ import {
 	tanggalHariIni,
 } from "@/app/libraries/tanggal";
 
-import JamDigital from "@/app/components/jamdigital";
 import { getOpenGraphImageDatas } from "./libraries/opengraph-imagedatas";
-import { METADATA_BASEURL } from "./libraries/metadata-baseurl";
-import { METADATA_ROBOTS } from "./libraries/metadata-robots";
-import { FaLocationArrow } from "react-icons/fa6";
+import { FaLocationArrow, FaRegNoteSticky } from "react-icons/fa6";
 import Link from "next/link";
+import { Metadata } from "next";
+import { Prayers } from "./types/prayers";
+import { FiExternalLink } from "react-icons/fi";
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
 	const [fetchedOpenGraphImageDatas] = await getOpenGraphImageDatas();
 	// console.log(fetchedOpenGraphImageDatas);
 	const openGraphImageUrl =
@@ -25,23 +25,8 @@ export async function generateMetadata() {
 		fetchedOpenGraphImageDatas.projectCoverImageAttribution.attributionMarkdown;
 
 	return {
-		title: "Hari ini | Jadwal Salat Kota Semarang",
-		description: `Jadwal salat hari ini di Kota Semarang dengan data yang diambil dari API myQuran v2.`,
-		...METADATA_BASEURL,
-		...METADATA_ROBOTS,
-		openGraph: {
-			title: "Hari ini | Jadwal Salat Kota Semarang",
-			description: `Jadwal salat hari ini di Kota Semarang dengan data yang diambil dari API myQuran v2.`,
-			url: `${METADATA_BASEURL.metadataBase}`,
-			images: [
-				{
-					url: openGraphImageUrl,
-					widht: 1200,
-					height: 630,
-					alt: `${openGraphImageAttribution}`,
-				},
-			],
-		},
+		title: "Today",
+		description: `Today's prayer schedule in Semarang ().`,
 	};
 }
 
@@ -62,74 +47,94 @@ async function fetchJadwalHariIni() {
 }
 
 export default async function JadwalHariIni() {
-	const fetchedJadwalHariIni = await fetchJadwalHariIni();
+	const fetchedJadwalHariIni: Prayers = await fetchJadwalHariIni();
 	// console.log("isi fetchedJadwalHariIni", fetchedJadwalHariIni);
-	const jadwalSalatSubuh = fetchedJadwalHariIni.data.jadwal.subuh;
-	const jadwalSalatDzuhur = fetchedJadwalHariIni.data.jadwal.dzuhur;
-	const jadwalSalatAshar = fetchedJadwalHariIni.data.jadwal.ashar;
-	const jadwalSalatMaghrib = fetchedJadwalHariIni.data.jadwal.maghrib;
-	const jadwalSalatIsya = fetchedJadwalHariIni.data.jadwal.isya;
-
+	const imsakTime = fetchedJadwalHariIni.data.jadwal.imsak;
+	const fajrTime = fetchedJadwalHariIni.data.jadwal.subuh;
+	const dhuhrTime = fetchedJadwalHariIni.data.jadwal.dzuhur;
+	const asrTime = fetchedJadwalHariIni.data.jadwal.ashar;
+	const maghribTime = fetchedJadwalHariIni.data.jadwal.maghrib;
+	const ishaTime = fetchedJadwalHariIni.data.jadwal.isya;
+	const prayerList = [
+		{
+			name: "Imsa",
+			localName: "Imsyak",
+			time: imsakTime,
+		},
+		{
+			name: "Fajr",
+			localName: "Subuh",
+			time: fajrTime,
+		},
+		{ name: "Dhuhr", localName: "Dzuhur", time: dhuhrTime },
+		{ name: "Asr", localName: "Ashar", time: asrTime },
+		{ name: "Maghrib", localName: "Maghrib", time: maghribTime },
+	];
 	return (
-		<div className="w-full max-w-(--breakpoint-xl) h-full flex flex-col bg-linear-to-br from-[#43489799] via-[#191E24] to-[#43489799] border-2 border-indigo-800 rounded-[20px]">
-			<div className="w-full h-full flex flex-col bg-linear-to-bl from-[#191E2480] to-[#4E83C31A] py-[60px] rounded-[20px] ">
-				<div className="text-4xl font-semibold text-center lg:text-start px-4 py-4 lg:px-24">
-					<h2>
-						{namaHariIni}, {tanggalHariIni} {bulanHariIni} {tahunHariIni}{" "}
-					</h2>
-					<JamDigital /> {`WIB`}
+		<div className="h-full w-full">
+			<div className=" w-full h-full flex flex-col bg-linear-119 from-0% from-[#4E4897]/60 via-51% via-[#191E24] to-100% to-[#4E4897]/60 rounded-[1.25rem] p-0.5 backdrop-blur-[1.25rem]">
+				<div className="w-full h-full flex flex-col bg-linear-136/oklch from-52% from-[#191E24]/50 to-100% to-[#4E83C3]/10 py-15 rounded-[calc(1.25rem-2px)]">
+					<div className="flex text-wrap text-4xl font-semibold text-center lg:text-start px-4 py-4 lg:px-24">
+						<h3>
+							{namaHariIni}, {tanggalHariIni} {bulanHariIni} {tahunHariIni}{" "}
+						</h3>
+					</div>
+
+					<div className="flex flex-col items-center px-6 py-5 gap-10 lg:px-24 md:flex-row flex-wrap max-md:justify-center">
+						{prayerList.map((prayer) => (
+							<div
+								className="flex gap-14"
+								aria-label={`${prayer.name} schedule in Semarang.`}
+								key={prayer.name}
+							>
+								<div className="flex flex-col justify-center items-center xl:items-start">
+									<span className="text-xl font-normal">{prayer.name}</span>
+									<span className="text-lg font-normal">
+										({prayer.localName})
+									</span>
+									<span className="text-3xl font-bold">{prayer.time}</span>
+									<div className="md:hidden rounded-xs my-8 h-0.5 w-38.75 bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
+								</div>
+								<div className="hidden md:rotate-180 md:rounded-full md:flex md:w-0.5 md:h-38.75 md:bg-linear-to-b md:from-bluetransparent md:via-blueopaque md:to-bluetransparent" />
+							</div>
+						))}
+						<div className="flex " aria-label={`Isha schedule in Semarang.`}>
+							<div className="flex flex-col justify-center items-center xl:items-start">
+								<span className="text-xl font-normal">Isha</span>
+								<span className="text-lg font-normal">(Isyak)</span>
+								<span className="text-3xl font-bold">{ishaTime}</span>
+								<div className="md:hidden rounded-xs my-8 h-0.5 w-38.75 bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
+							</div>
+						</div>
+					</div>
 				</div>
-				<div className="flex flex-col justify-center items-center lg:flex-row flex-wrap xl:gap-16 xl:px-24 xl:py-20">
-					<div className="flex gap-16" aria-label="Waktu salat subuh hari ini">
-						<div className="flex flex-col justify-center items-center xl:items-start">
-							<span className="text-xl font-normal">Subuh</span>
-							<span className="text-3xl font-bold">{jadwalSalatSubuh}</span>
-							<hr className="lg:hidden rounded-xs my-8 h-0.5 w-[155px] bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
-						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
-					</div>
-					<div className="flex gap-16" aria-label="Waktu salat dzuhur hari ini">
-						<div className="flex flex-col justify-center items-center xl:items-start">
-							<span className="text-xl font-normal">Dzuhur</span>
-							<span className="text-3xl font-bold">{jadwalSalatDzuhur}</span>
-							<hr className="lg:hidden rounded-xs my-8 h-0.5 w-[155px] bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
-						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
-					</div>
-					<div className="flex gap-16" aria-label="Waktu salat ashar hari ini">
-						<div className="flex flex-col justify-center items-center xl:items-start">
-							<span className="text-xl font-normal">Ashar</span>
-							<span className="text-3xl font-bold">{jadwalSalatAshar}</span>
-							<hr className="lg:hidden rounded-xs my-8 h-0.5 w-[155px] bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
-						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
-					</div>
-					<div
-						className="flex gap-16"
-						aria-label="Waktu salat maghrib hari ini"
+			</div>
+			<Link
+				href="https://www.google.com/maps/search/masjid+di+kota+semarang/@-7.0094024,110.3428084,15z/data=!3m1!4b1?entry=ttu"
+				target="_blank"
+				className="h-16 w-full md:w-1/2 flex items-center justify-center text-wrap xl:h-16 text-xl mx-auto font-normal mt-4 gap-x-2 p-4 active-button rounded-[10px] hover:scale-110 transition-transform"
+			>
+				Cari Masjid
+				<FaLocationArrow />
+			</Link>
+
+			<div className="my-10">
+				<h3 className="flex items-center text-lg font-medium">
+					<FaRegNoteSticky className="mr-2" />
+					Small notes
+				</h3>
+				<div>
+					Imsak:{" "}
+					<a
+						href="https://kemenag.go.id/nasional/penjelasan-kemenag-waktu-imsak-10-menit-sebelum-subuh-3u18r0"
+						target="_blank"
+						className="underline flex items-center"
 					>
-						<div className="flex flex-col justify-center items-center xl:items-start">
-							<span className="text-xl font-normal">Maghrib</span>
-							<span className="text-3xl font-bold">{jadwalSalatMaghrib}</span>
-							<hr className="lg:hidden rounded-xs my-8 h-0.5 w-[155px] bg-linear-to-r from-bluetransparent via-blueopaque to-bluetransparent" />
-						</div>
-						<hr className="hidden lg:rotate-180 lg:rounded-full lg:flex lg:w-0.5 lg:h-[155px] lg:bg-linear-to-b lg:from-bluetransparent lg:via-blueopaque lg:to-bluetransparent" />
-					</div>
-					<div className="flex gap-16" aria-label="Waktu salat isya hari ini">
-						<div className="flex flex-col">
-							<span className="text-xl font-normal">Isya</span>
-							<span className="text-3xl font-bold">{jadwalSalatIsya}</span>
-						</div>
-					</div>
+						Penjelasan Kemenag Waktu Imsak 10 Menit Sebelum Subuh -
+						Kemenag.go.id
+						<FiExternalLink className="ml-1" />
+					</a>
 				</div>
-				<Link
-					href="https://www.google.com/maps/search/masjid+di+kota+semarang/@-7.0094024,110.3428084,15z/data=!3m1!4b1?entry=ttu"
-					target="_blank"
-					className="h-18 flex items-center text-wrap xl:h-16 text-xl font-normal mx-auto mt-4 gap-x-2 p-4 active-button rounded-md hover:scale-110 transition-transform"
-				>
-					Cari Masjid
-					<FaLocationArrow />
-				</Link>
 			</div>
 		</div>
 	);

@@ -1,23 +1,31 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-bluetransparent: #77b6d200;
-  --color-blueopaque: #77b6d2;
-  --color-blacksemitransparent: #191e2480;
-  --color-lightblue: #4e83c312;
-  --color-darkgraymetal: #1d1f2a;
-  --color-richblack: #000d1b;
-  --color-palatinate-blue-semitransparent: #3444d440;
-  --color-palatinate-blue: #3444d4;
-  --color-white-shade: #fefefe;
+	--color-bluetransparent: #77b6d200;
+	--color-blueopaque: #77b6d2;
+	--color-blacksemitransparent: #191e2480;
+	--color-lightblue: #4e83c312;
+	--color-darkgraymetal: #1d1f2a;
+	--color-richblack: #000d1b;
+	--color-palatinate-blue-semitransparent: #3444d440;
+	--color-palatinate-blue: #3444d4;
+	--color-white-shade: #fefefe;
 
-  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
-  --background-image-gradient-conic: conic-gradient(
-    from 180deg at 50% 50%,
-    var(--tw-gradient-stops)
-  );
+	/* Declare similar color with brand name, 
+  * so far I have "salatsmg" in my mind */
+	--color-salatsmg-primary: #3444d4;
+	--color-salatsmg-neutral: #fefefe;
+	--color-salatsmg-secondary: #0b1521;
+
+
+  
+	--background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+	--background-image-gradient-conic: conic-gradient(
+		from 180deg at 50% 50%,
+		var(--tw-gradient-stops)
+	);
 }
 
 /*
@@ -29,67 +37,67 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
 }
 
 @utility unactive-button {
-  @apply text-white-shade bg-palatinate-blue-semitransparent;
+	@apply text-white-shade bg-palatinate-blue-semitransparent;
 }
 
 @utility active-button {
-  @apply text-white-shade bg-palatinate-blue;
+	@apply text-white-shade bg-palatinate-blue;
 }
 
 @utility toplefta-gradient {
-  background-image: radial-gradient(
-    circle closest-corner at top left,
-    #4075b3,
-    #d9d9d900
-  );
+	background-image: radial-gradient(
+		circle closest-corner at top left,
+		#4075b3,
+		#d9d9d900
+	);
 }
 
 @utility bottomright-gradient {
-  background-image: radial-gradient(
-    circle farthest-corner at bottom right,
-    #3b38b0,
-    #d9d9d900
-  );
+	background-image: radial-gradient(
+		circle farthest-corner at bottom right,
+		#3b38b0,
+		#d9d9d900
+	);
 }
 
 @utility corners-gradient {
-  background-image:
-    radial-gradient(circle closest-corner at top left, #4075b3, #d9d9d900),
-    radial-gradient(circle farthest-corner at bottom right, #3b38b0, #d9d9d900);
+	background-image:
+		radial-gradient(circle closest-corner at top left, #4075b3, #d9d9d900),
+		radial-gradient(circle farthest-corner at bottom right, #3b38b0, #d9d9d900);
 }
 
 @utility custom-gradients {
-  @apply bg-linear-to-br from-darkgraymetal to-richblack;
-  background-image:
-    radial-gradient(circle closest-corner at top left, #4075b3, #d9d9d900),
-    radial-gradient(circle farthest-corner at bottom right, #3b38b0, #d9d9d900);
+	@apply bg-linear-to-br from-darkgraymetal to-richblack;
+	background-image:
+		radial-gradient(circle closest-corner at top left, #4075b3, #d9d9d900),
+		radial-gradient(circle farthest-corner at bottom right, #3b38b0, #d9d9d900);
 }
 
 @utility flip-card {
-  perspective: 1000px;
+	perspective: 1000px;
 }
 
 @utility flip-card-inner {
-  transform-style: preserve-3d;
+	transform-style: preserve-3d;
 }
 
 @utility flip-card-front {
-  position: absolute;
-  backface-visibility: hidden;
+	position: absolute;
+	backface-visibility: hidden;
 }
 
 @utility flip-card-back {
-  position: absolute;
-  backface-visibility: hidden;
-  transform: rotateY(180deg);
+	position: absolute;
+	backface-visibility: hidden;
+	transform: rotateY(180deg);
 }
