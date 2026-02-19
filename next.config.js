@@ -15,6 +15,10 @@ const nextConfig = {
 			fullUrl: true,
 		},
 	},
+	typescript: {
+		ignoreBuildErrors: false,
+		tsconfigPath: "tsconfig.json",
+	},
 };
 
 module.exports = nextConfig;
