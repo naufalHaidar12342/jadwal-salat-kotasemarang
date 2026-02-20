@@ -1,37 +1,37 @@
 {
-  "name": "jadwal-salat-nextjs-typescript",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@tailwindcss/postcss": "^4.1.18",
-    "@types/node": "^25.2.3",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
-    "framer-motion": "^12.34.0",
-    "luxon": "^3.4.0",
-    "next": "16.1.6",
-    "postcss": "^8.5.6",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "react-icons": "^5.0.1",
-    "react-paginate": "^8.2.0",
-    "sharp": "^0.34.5",
-    "tailwindcss": "^4.1.18",
-    "typescript": "^5.3.3"
-  },
-  "devDependencies": {
-    "@types/luxon": "^3.3.1",
-    "eslint": "^9.39.2",
-    "eslint-config-next": "^16.1.6"
-  },
-  "overrides": {
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3"
-  }
+	"name": "jadwal-salat-nextjs-typescript",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@tailwindcss/postcss": "^4.1.18",
+		"@types/node": "^25.2.3",
+		"@types/react": "19.2.14",
+		"@types/react-dom": "19.2.3",
+		"framer-motion": "^12.34.0",
+		"luxon": "^3.4.0",
+		"next": "16.1.6",
+		"postcss": "^8.5.6",
+		"react": "19.2.4",
+		"react-dom": "19.2.4",
+		"react-icons": "^5.0.1",
+		"react-paginate": "^8.2.0",
+		"sharp": "^0.34.5",
+		"tailwindcss": "^4.1.18",
+		"typescript": "^5.3.3"
+	},
+	"devDependencies": {
+		"@types/luxon": "^3.3.1",
+		"eslint": "^9.39.2",
+		"eslint-config-next": "^16.1.6"
+	},
+	"overrides": {
+		"@types/react": "19.2.14",
+		"@types/react-dom": "19.2.3"
+	}
 }
