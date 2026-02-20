@@ -21,12 +21,12 @@ const nextConfig = {
 	},
 	turbopack: {
 		resolveAlias: {
-			"@/app/components/Footer": "app/components/Footer.tsx",
-			"@/app/components/NavigationBar": "app/components/NavigationBar.tsx",
-			"@/app/components/TitleBar": "app/components/TitleBar.tsx",
+			"@/app/components/Footer": "./app/components/Footer.tsx",
+			"@/app/components/NavigationBar": "./app/components/NavigationBar.tsx",
+			"@/app/components/TitleBar": "./app/components/TitleBar.tsx",
 			"@/app/components/MobileNavigationBar":
-				"app/components/MobileNavigationBar.tsx",
-			"@/app/components/DigitalClock": "app/components/DigitalClock.tsx",
+				"./app/components/MobileNavigationBar.tsx",
+			"@/app/components/DigitalClock": "./app/components/DigitalClock.tsx",
 		},
 	},
 };
