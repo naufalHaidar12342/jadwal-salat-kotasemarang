@@ -3,7 +3,7 @@ import { MdPhotoCameraBack } from "react-icons/md";
 import { getOpenGraphImageDatas } from "@/app/libraries/opengraph-imagedatas";
 import { METADATA_BASEURL } from "../libraries/metadata-baseurl";
 import { METADATA_ROBOTS } from "../libraries/metadata-robots";
-import CardFlip from "./cardflip";
+
 import Link from "next/link";
 
 export async function generateMetadata() {
