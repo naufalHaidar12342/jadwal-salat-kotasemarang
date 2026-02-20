@@ -19,16 +19,16 @@ const nextConfig = {
 		ignoreBuildErrors: false,
 		tsconfigPath: "tsconfig.json",
 	},
-	turbopack: {
-		resolveAlias: {
-			"@/app/components/Footer": "app/components/Footer.tsx",
-			"@/app/components/NavigationBar": "app/components/NavigationBar.tsx",
-			"@/app/components/TitleBar": "app/components/TitleBar.tsx",
-			"@/app/components/MobileNavigationBar":
-				"app/components/MobileNavigationBar.tsx",
-			"@/app/components/DigitalClock": "app/components/DigitalClock.tsx",
-		},
-	},
+	// turbopack: {
+	// 	resolveAlias: {
+	// 		"@/app/components/Footer": "app/components/Footer.tsx",
+	// 		"@/app/components/NavigationBar": "app/components/NavigationBar.tsx",
+	// 		"@/app/components/TitleBar": "app/components/TitleBar.tsx",
+	// 		"@/app/components/MobileNavigationBar":
+	// 			"app/components/MobileNavigationBar.tsx",
+	// 		"@/app/components/DigitalClock": "app/components/DigitalClock.tsx",
+	// 	},
+	// },
 };
 
 module.exports = nextConfig;
