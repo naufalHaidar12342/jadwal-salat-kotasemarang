@@ -30,6 +30,6 @@
 		"**/*.ts",
 		"**/*.tsx",
 		"./app/**/*.{ts,tsx,js,jsx}"
-	],
+, "next.config.mjs"	],
 	"exclude": ["node_modules"]
 }
