@@ -8,7 +8,7 @@ import {
 } from "@/app/libraries/tanggal";
 import { DateTime } from "luxon";
 
-export default function JamDigital() {
+export default function DigitalClock() {
 	const [jamDigital, setJamDigital] = useState(
 		DateTime.local().setZone("Asia/Jakarta"),
 	);
