@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
-import TitleBar from "@/app/components/titleBar";
+import TitleBar from "./components/titleBar";
 import { Metadata } from "next";
 import MobileNavigationBar from "./components/mobileNavigationBar";
 import Footer from "./components/footer";
