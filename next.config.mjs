@@ -21,14 +21,14 @@ const nextConfig = {
 	},
 	turbopack: {
 		resolveAlias: {
-			"@/app/components/Footer": "app/components/Footer",
-			"@/app/components/NavigationBar": "app/components/NavigationBar",
-			"@/app/components/TitleBar": "app/components/TitleBar",
+			"@/app/components/Footer": "./app/components/Footer",
+			"@/app/components/NavigationBar": "./app/components/NavigationBar",
+			"@/app/components/TitleBar": "./app/components/TitleBar",
 			"@/app/components/MobileNavigationBar":
-				"app/components/MobileNavigationBar",
-			"@/app/components/DigitalClock": "app/components/DigitalClock",
+				"./app/components/MobileNavigationBar",
+			"@/app/components/DigitalClock": "./app/components/DigitalClock",
 		},
 	},
 };
 
-module.exports = nextConfig;
+export default nextConfig;

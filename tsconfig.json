@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./*"]
 		},
@@ -7,12 +8,12 @@
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
 		"skipLibCheck": true,
-		"strict": false,
+		"strict": true,
 		"noEmit": true,
 		"incremental": true,
-		"module": "esnext",
+		"module": "preserve",
 		"esModuleInterop": true,
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "react-jsx",
@@ -28,7 +29,9 @@
 		".next/dev/types/**/*.ts",
 		"**/*.mts",
 		"**/*.ts",
-		"**/*.tsx"
+		"**/*.tsx",
+		"./app/**/*.{ts,tsx,js,jsx}",
+		"next.config.mjs"
 	],
 	"exclude": ["node_modules"]
 }
