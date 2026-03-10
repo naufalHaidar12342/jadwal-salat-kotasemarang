@@ -1,10 +1,10 @@
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
-import TitleBar from "@/app/components/TitleBar";
+import TitleBar from "@/app/components/titleBar";
 import { Metadata } from "next";
-import MobileNavigationBar from "./components/MobileNavigationBar";
-import Footer from "./components/Footer";
-import NavigationBar from "./components/NavigationBar";
+import MobileNavigationBar from "./components/mobileNavigationBar";
+import Footer from "./components/footer";
+import NavigationBar from "./components/navigationBar";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 

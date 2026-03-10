@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 import { IoMdClock } from "react-icons/io";
-import JamDigital from "./DigitalClock";
+import JamDigital from "./digitalClock";
 
 export default function TitleBar() {
 	return (
