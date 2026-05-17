@@ -1,11 +1,4 @@
-"use client";
 import { useEffect, useState } from "react";
-import {
-	detikHariIni,
-	jamHariIni,
-	menitHariIni,
-	sekarang,
-} from "@/app/libraries/tanggal";
 import { DateTime } from "luxon";
 
 export default function DigitalClock() {

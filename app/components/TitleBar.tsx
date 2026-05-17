@@ -1,8 +1,13 @@
+"use client";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 import { IoMdClock } from "react-icons/io";
-import JamDigital from "./digitalClock";
+// import JamDigital from "./digitalClock";
+
+const NoSSRJamDigital = dynamic(() => import("./digitalClock"), {
+	ssr: false,
+});
 
 export default function TitleBar() {
 	return (
@@ -11,7 +16,7 @@ export default function TitleBar() {
 				<div className="flex items-center gap-x-2">
 					<IoMdClock className="size-8" />
 					<Suspense fallback={<div>Loading digital clock...</div>}>
-						<JamDigital />
+						<NoSSRJamDigital />
 					</Suspense>
 				</div>
 				<span className="font-medium text-lg italic">
