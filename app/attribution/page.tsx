@@ -3,9 +3,8 @@ import { MdPhotoCameraBack } from "react-icons/md";
 import { getOpenGraphImageDatas } from "@/app/libraries/opengraph-imagedatas";
 import { METADATA_BASEURL } from "../libraries/metadata-baseurl";
 import { METADATA_ROBOTS } from "../libraries/metadata-robots";
-import { Divider } from "@nextui-org/divider";
 import CardFlip from "./cardflip";
-import { Link } from "@nextui-org/link";
+import Link from "next/link";
 
 export async function generateMetadata() {
 	const [fetchedOpenGraphImageDatas] = await getOpenGraphImageDatas();
@@ -46,7 +45,7 @@ export default async function Credits() {
 					<h2 className="font-bold text-2xl xl:text-5xl">
 						Credits/Attribution
 					</h2>
-					<Divider className="w-full bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent my-8" />
+					<hr className="w-full bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent my-8 h-0.5" />
 					<span className="text-2xl font-normal">
 						Berikut <i>attribution</i> dari beberapa sumber yang digunakan dalam
 						proyek ini.
@@ -64,7 +63,6 @@ export default async function Credits() {
 						<Link
 							href="https://www.flaticon.com/free-icon/pray_3167301?term=prayer&page=1&position=50&origin=tag&related_id=3167301"
 							target="_blank"
-							showAnchorIcon
 							className="text-white-shade text-xl"
 						>
 							favicons
@@ -81,7 +79,6 @@ export default async function Credits() {
 						<Link
 							href="https://react-icons.github.io/react-icons/"
 							target="_blank"
-							showAnchorIcon
 							className="text-white-shade text-xl"
 						>
 							react-icons
@@ -98,7 +95,6 @@ export default async function Credits() {
 						<Link
 							href="https://documenter.getpostman.com/view/841292/2s9YsGittd#intro"
 							target="_blank"
-							showAnchorIcon
 							className="text-white-shade text-xl"
 						>
 							API myQuran v2

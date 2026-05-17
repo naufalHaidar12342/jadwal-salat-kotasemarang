@@ -6,13 +6,13 @@ import {
 import { PRAYER_API_ENDPOINT } from "@/app/libraries/apiendpoint";
 import { KOTA_SEMARANG_ID } from "@/app/libraries/kotasemarangid";
 import { DateTime } from "luxon";
-import NextLink from "next/link";
+import Link from "next/link";
 import { METADATA_BASEURL } from "../libraries/metadata-baseurl";
 import { METADATA_ROBOTS } from "../libraries/metadata-robots";
 import { getOpenGraphImageDatas } from "../libraries/opengraph-imagedatas";
-import { Divider } from "@nextui-org/divider";
+
 import { TiArrowForward } from "react-icons/ti";
-import { Link } from "@nextui-org/link";
+
 export async function generateMetadata() {
 	const [fetchedOpenGraphImageDatas] = await getOpenGraphImageDatas();
 	const openGraphImageUrl =
@@ -47,7 +47,7 @@ async function fetchJadwalSebulan() {
 		{
 			method: "GET",
 			cache: "no-cache",
-		}
+		},
 	)
 		.then((res) => res.json())
 		.catch((err) => console.error(err));
@@ -86,21 +86,18 @@ export default async function JadwalSebulan() {
 				{fetchedJadwalSebulan.map((jadwalSehari: any) => (
 					<div key={jadwalSehari.date}>
 						<div className="flex group items-center text-3xl">
-							<NextLink
+							<Link
 								href={`/jadwal-sebulan/${jadwalSehari.date}`}
 								className=" font-bold"
 							>
 								{ubahTanggalKeNamaHari(jadwalSehari.date)}
-							</NextLink>
+							</Link>
 							<TiArrowForward className="opacity-0 group-hover:opacity-100 group-hover:transition group-hover:ease-in group-hover:delay-75 group-hover:translate-x-3" />
 						</div>
 						<span className="text-xl font-normal">
 							{ubahFormatTanggal(jadwalSehari.date)}
 						</span>
-						<Divider
-							orientation="horizontal"
-							className="w-full mx-auto bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent my-12"
-						/>
+						<hr className="mx-auto bg-gradient-to-r from-bluetransparent via-blueopaque to-bluetransparent my-12 h-1 w-full rounded-sm" />
 					</div>
 				))}
 			</div>
